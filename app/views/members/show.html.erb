@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @member.member_id %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @member.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @member.end_date %>
+</p>
+
+<p>
+  <strong>Freeze count:</strong>
+  <%= @member.freeze_count %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

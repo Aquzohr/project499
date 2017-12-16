@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :receipts
+  resources :serves
+  resources :bookings
+  resources :staffs
+  resources :members
+  resources :announcements
   devise_for :users
   root 'home#index'
 

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  checkin_time: MyString
+  checkout_time: MyString
+  date: 2017-12-16
+
+two:
+  checkin_time: MyString
+  checkout_time: MyString
+  date: 2017-12-16

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member_id: MyString
+  start_date: 2017-12-16
+  end_date: 2017-12-16
+  freeze_count: 1
+
+two:
+  member_id: MyString
+  start_date: 2017-12-16
+  end_date: 2017-12-16
+  freeze_count: 1
