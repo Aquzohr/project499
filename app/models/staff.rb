@@ -11,5 +11,8 @@ class Staff < ApplicationRecord
 	has_many :nontrainer_packages, through: :receipts
 	has_many :trainer_packages, through: :receipts
 
-	belongs_to :user
+	belongs_to :user, optional: true, dependent: :destroy
+	accepts_nested_attributes_for :user
+	validates_associated :user
+	
 end

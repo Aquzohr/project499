@@ -1,4 +1,4 @@
-<%= form_with(model: staff, local: true) do |form| %>
+<%= bootstrap_form_for(staff) do |form| %>
   <% if staff.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :position %>
     <%= form.text_field :position, id: :staff_position %>
-  </div>
-
-  <div class="field">
-    <%= form.label :staff_id %>
     <%= form.text_field :staff_id, id: :staff_staff_id %>
-  </div>
 
-  <div class="actions">
+    <%= form.fields_for :user do |f| %>
+      <%= f.text_field :firstname %>
+      <%= f.text_field :lastname %>
+      <%= f.text_field :phone %>
+      <%= f.email_field :email %>
+      <%= f.password_field :password %>
+      <%= f.password_field :password_confirmation %>
+    <% end %>
+
+
     <%= form.submit %>
   </div>
 <% end %>

@@ -15,6 +15,7 @@ class StaffsController < ApplicationController
   # GET /staffs/new
   def new
     @staff = Staff.new
+    @staff.build_user
   end
 
   # GET /staffs/1/edit
@@ -69,6 +70,6 @@ class StaffsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.require(:staff).permit(:position, :staff_id)
+      params.require(:staff).permit(:position, :staff_id,user_attributes: [:id, :firstname, :lastname, :phone, :email, :password, :password_confirmation])
     end
 end

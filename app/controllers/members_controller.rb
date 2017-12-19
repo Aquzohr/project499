@@ -15,6 +15,7 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
+    @member.build_user
   end
 
   # GET /members/1/edit
@@ -69,6 +70,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:member_id, :start_date, :end_date, :freeze_count)
+      params.require(:member).permit(:member_id, :start_date, :end_date, :freeze_count, user_attributes: [:id, :firstname, :lastname, :phone, :email, :password, :password_confirmation])
     end
 end
