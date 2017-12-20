@@ -6,11 +6,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-	<script
-	  src="https://code.jquery.com/jquery-3.2.1.js"
-	  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-	  crossorigin="anonymous"></script>
-
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
@@ -29,8 +24,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="<%= members_path %>">Member</a></li>
-            <li><a href="<%= staffs_path %>">Staff</a></li>
+            <li><a href="<%= members_path %>" data-turbolinks="false">Member</a></li>
+            <li><a href="<%= staffs_path %>" data-turbolinks="false">Staff</a></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -41,8 +36,20 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to(destroy_user_session_path, :method => :delete) do %> 
+                  <span class="glyphicon glyphicon-log-out"></span> Logout
+                <% end %>
+                
+              </li>       
+            <% else %>
+              <li>
+                <%= link_to(new_user_session_path) do %> 
+                  <span class="glyphicon glyphicon-log-in"></span> Login
+                <% end %>
+              </li> 
+            <% end %>
           </ul>
         </div>
       </div>

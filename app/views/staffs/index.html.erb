@@ -2,28 +2,25 @@
 
 <h1>Staffs</h1>
 
-<table>
+<%= link_to 'New Staff', new_staff_path %>
+
+
+<table id="table" 
+       data-toggle="table"
+       data-query-params-type="page"
+       data-search="true"
+       data-pagination="true"
+       data-pagination-loop ="false"
+       data-side-pagination="server"
+       data-url="staffs.json">
   <thead>
     <tr>
-      <th>Position</th>
-      <th>Staff</th>
-      <th colspan="3"></th>
+      <th data-field="staff_id" data-sortable="true">Staff ID</th>
+      <th data-field="fullname" >Fullname</th>
+      <th data-field="phone" >Phone</th>
+      <th data-field="position" >Position</th>
+      <th data-field="edit"></th>
+      <th data-field="remove"></th>
     </tr>
   </thead>
-
-  <tbody>
-    <% @staffs.each do |staff| %>
-      <tr>
-        <td><%= staff.position %></td>
-        <td><%= staff.staff_id %></td>
-        <td><%= link_to 'Show', staff %></td>
-        <td><%= link_to 'Edit', edit_staff_path(staff) %></td>
-        <td><%= link_to 'Destroy', staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Staff', new_staff_path %>

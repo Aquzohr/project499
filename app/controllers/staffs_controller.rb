@@ -4,7 +4,17 @@ class StaffsController < ApplicationController
   # GET /staffs
   # GET /staffs.json
   def index
-    @staffs = Staff.all
+    @staffs = Staff.search(params[:searchText]).order("staff_id asc").paginate(page: params[:pageNumber], per_page: params[:pageSize])
+
+    respond_to do |f|
+      f.html { render 'staffs/index' }
+      f.json { 
+        render json: {
+          total: @staffs.total_entries,
+          rows: @staffs.as_json({ index: true })
+        } 
+      }
+    end
   end
 
   # GET /staffs/1
@@ -70,6 +80,6 @@ class StaffsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.require(:staff).permit(:position, :staff_id,user_attributes: [:id, :firstname, :lastname, :phone, :email, :password, :password_confirmation])
+      params.require(:staff).permit(:position, :staff_id, user_attributes: [:id, :firstname, :lastname, :phone, :email, :password, :password_confirmation])
     end
 end
