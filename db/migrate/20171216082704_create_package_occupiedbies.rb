@@ -1,4 +1,4 @@
-class CreatePackageOccupiedbies < ActiveRecord::Migration[5.1]
+class CreatePackageOccupiedbies < ActiveRecord::Migration[5.0]
   def change
     create_table :package_occupiedbies do |t|
       t.date :start_date

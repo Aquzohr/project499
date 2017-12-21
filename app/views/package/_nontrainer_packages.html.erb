@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Nontrainer Packages</h1>
+
+<table data-toggle="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Freeze Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nontrainer_packages.each do |nontrainer_package| %>
+      <tr>
+        <td><%= nontrainer_package.name %></td>
+        <td><%= nontrainer_package.price %></td>
+        <td><%= nontrainer_package.freeze_time %></td>
+        <td><%= link_to 'Show', nontrainer_package %></td>
+        <td><%= link_to 'Edit', edit_nontrainer_package_path(nontrainer_package) %></td>
+        <td><%= link_to 'Destroy', nontrainer_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nontrainer Package', new_nontrainer_package_path %>

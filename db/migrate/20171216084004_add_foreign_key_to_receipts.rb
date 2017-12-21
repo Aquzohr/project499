@@ -1,4 +1,4 @@
-class AddForeignKeyToReceipts < ActiveRecord::Migration[5.1]
+class AddForeignKeyToReceipts < ActiveRecord::Migration[5.0]
   def change
     add_reference :receipts, :trainer_package, foreign_key: true
     add_reference :receipts, :nontrainer_package, foreign_key: true

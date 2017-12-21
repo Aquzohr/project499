@@ -1,4 +1,4 @@
-class CreateServes < ActiveRecord::Migration[5.1]
+class CreateServes < ActiveRecord::Migration[5.0]
   def change
     create_table :serves do |t|
       t.string :checkin_time

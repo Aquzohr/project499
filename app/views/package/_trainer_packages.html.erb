@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trainer Packages</h1>
+
+<table data-toggle="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Session</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trainer_packages.each do |trainer_package| %>
+      <tr>
+        <td><%= trainer_package.name %></td>
+        <td><%= trainer_package.price %></td>
+        <td><%= trainer_package.session %></td>
+        <td><%= link_to 'Show', trainer_package %></td>
+        <td><%= link_to 'Edit', edit_trainer_package_path(trainer_package) %></td>
+        <td><%= link_to 'Destroy', trainer_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trainer Package', new_trainer_package_path %>

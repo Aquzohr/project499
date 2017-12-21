@@ -1,4 +1,4 @@
-<%= form_with(model: announcement, local: true) do |form| %>
+<%= bootstrap_form_for(announcement) do |form| %>
   <% if announcement.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
@@ -11,22 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
+
     <%= form.text_field :title, id: :announcement_title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :des %>
     <%= form.text_area :des, id: :announcement_des %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
     <%= form.date_select :date, id: :announcement_date %>
-  </div>
-
-  <div class="actions">
     <%= form.submit %>
-  </div>
+
 <% end %>

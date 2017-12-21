@@ -1,0 +1,2 @@
+module TrainerPackagesHelper
+end

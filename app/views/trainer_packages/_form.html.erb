@@ -1,0 +1,18 @@
+<%= bootstrap_form_for(trainer_package) do |f| %>
+  <% if trainer_package.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trainer_package.errors.count, "error") %> prohibited this trainer_package from being saved:</h2>
+
+      <ul>
+      <% trainer_package.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :name %>
+  <%= f.number_field :price %>
+  <%= f.number_field :session %>
+  <%= f.submit %>
+<% end %>

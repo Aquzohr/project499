@@ -1,4 +1,4 @@
-class CreateReceipts < ActiveRecord::Migration[5.1]
+class CreateReceipts < ActiveRecord::Migration[5.0]
   def change
     create_table :receipts do |t|
       t.date :date

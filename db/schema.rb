@@ -16,123 +16,123 @@ ActiveRecord::Schema.define(version: 20171216084004) do
   enable_extension "plpgsql"
 
   create_table "announcements", force: :cascade do |t|
-    t.string "title"
-    t.text "des"
-    t.date "date"
+    t.string   "title"
+    t.text     "des"
+    t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "staff_id"
-    t.index ["staff_id"], name: "index_announcements_on_staff_id"
+    t.integer  "staff_id"
+    t.index ["staff_id"], name: "index_announcements_on_staff_id", using: :btree
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "date"
-    t.string "time"
-    t.bigint "staff_id"
-    t.bigint "member_id"
+    t.date     "date"
+    t.string   "time"
+    t.integer  "staff_id"
+    t.integer  "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_bookings_on_member_id"
-    t.index ["staff_id"], name: "index_bookings_on_staff_id"
+    t.index ["member_id"], name: "index_bookings_on_member_id", using: :btree
+    t.index ["staff_id"], name: "index_bookings_on_staff_id", using: :btree
   end
 
   create_table "branches", force: :cascade do |t|
-    t.string "name"
-    t.text "address"
+    t.string   "name"
+    t.text     "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "members", force: :cascade do |t|
-    t.string "member_id"
-    t.date "start_date"
-    t.date "end_date"
-    t.integer "freeze_count", default: 0, null: false
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_members_on_user_id"
+    t.string   "member_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "freeze_count", default: 0, null: false
+    t.integer  "user_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_members_on_user_id", using: :btree
   end
 
   create_table "nontrainer_packages", force: :cascade do |t|
-    t.string "name"
-    t.float "price", default: 0.0, null: false
-    t.integer "freeze_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.float    "price",       default: 0.0, null: false
+    t.integer  "freeze_time", default: 0,   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "package_occupiedbies", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.integer "balance_session", default: 0, null: false
-    t.bigint "trainer_package_id"
-    t.bigint "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_package_occupiedbies_on_member_id"
-    t.index ["trainer_package_id"], name: "index_package_occupiedbies_on_trainer_package_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "balance_session",    default: 0, null: false
+    t.integer  "trainer_package_id"
+    t.integer  "member_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["member_id"], name: "index_package_occupiedbies_on_member_id", using: :btree
+    t.index ["trainer_package_id"], name: "index_package_occupiedbies_on_trainer_package_id", using: :btree
   end
 
   create_table "receipts", force: :cascade do |t|
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "trainer_package_id"
-    t.bigint "nontrainer_package_id"
-    t.bigint "staff_id"
-    t.index ["nontrainer_package_id"], name: "index_receipts_on_nontrainer_package_id"
-    t.index ["staff_id"], name: "index_receipts_on_staff_id"
-    t.index ["trainer_package_id"], name: "index_receipts_on_trainer_package_id"
+    t.date     "date"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "trainer_package_id"
+    t.integer  "nontrainer_package_id"
+    t.integer  "staff_id"
+    t.index ["nontrainer_package_id"], name: "index_receipts_on_nontrainer_package_id", using: :btree
+    t.index ["staff_id"], name: "index_receipts_on_staff_id", using: :btree
+    t.index ["trainer_package_id"], name: "index_receipts_on_trainer_package_id", using: :btree
   end
 
   create_table "serves", force: :cascade do |t|
-    t.string "checkin_time"
-    t.string "checkout_time"
-    t.date "date"
-    t.bigint "staff_id"
-    t.bigint "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_serves_on_member_id"
-    t.index ["staff_id"], name: "index_serves_on_staff_id"
+    t.string   "checkin_time"
+    t.string   "checkout_time"
+    t.date     "date"
+    t.integer  "staff_id"
+    t.integer  "member_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["member_id"], name: "index_serves_on_member_id", using: :btree
+    t.index ["staff_id"], name: "index_serves_on_staff_id", using: :btree
   end
 
   create_table "staffs", force: :cascade do |t|
-    t.string "position"
-    t.string "staff_id"
-    t.bigint "user_id"
+    t.string   "position"
+    t.string   "staff_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_staffs_on_user_id"
+    t.index ["user_id"], name: "index_staffs_on_user_id", using: :btree
   end
 
   create_table "trainer_packages", force: :cascade do |t|
-    t.string "name"
-    t.float "price", default: 0.0, null: false
-    t.integer "session"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.float    "price",      default: 0.0, null: false
+    t.integer  "session",    default: 0,   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.string "firstname"
-    t.string "lastname"
-    t.string "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "phone"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "announcements", "staffs"

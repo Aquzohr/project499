@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  
+  get 'package', to: 'package#index'
+
+  scope '/package' do
+    resources :nontrainer_packages
+    resources :trainer_packages
+  end
+
   resources :receipts
   resources :serves
   resources :bookings

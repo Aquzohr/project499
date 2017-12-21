@@ -1,0 +1,2 @@
+module NontrainerPackagesHelper
+end
