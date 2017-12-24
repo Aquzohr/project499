@@ -1,31 +1,81 @@
+
+<br>
+<h2><span class="glyphicon glyphicon-user"></span> CHECK-IN / CHECK-OUT</h2>
+<hr>
+
+<%= bootstrap_form_for(@serve) do |f| %>
+
+  <%= f.collection_select :member_id, Member.select(:id, :member_id), :id, :member_id , hide_label: true, placeholder: "MEMBER CODE", autofocus: true %>
+  <%= f.hidden_field :checkin_time, value: Time.now.strftime("%H:%M:%S") %>
+  <%= f.hidden_field :date, value: Time.now %>
+  <%= f.submit 'Checkin' %>
+<% end %>
+
+<hr>
+<br>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Serves</h1>
+<% if  @lastCheckin %>
+  <div class="panel panel-info">
+    <div class="panel-heading">Member last Checkin Infomation</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <p><h4>Fullname : <%= @lastCheckin.member.user.firstname %> <%= @lastCheckin.member.user.lastname %></h4></p>
+          <p><h4>Regis Date : <%= @lastCheckin.member.start_date %> </h4></p>
+          
+        <% unless @lastCheckin.member.end_date.blank? %>
+            <% if Time.now.to_date < @lastCheckin.member.end_date %>
+              <p><h4 class="text-success">Exp Date : <%= @lastCheckin.member.end_date %> </h4></p>
+            <% else %>
+              <p><h4 class="text-danger">Exp Date : <%= @lastCheckin.member.end_date %></h4></p>
+            <% end %>
+          <% else %>
+            <p><h4>Exp Date : ไม่ระบุวันหมดอายุ </h4></p>
+          <% end %>
 
-<table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="col-md-12 text-right"><h3><kbd>TODAY: <%= Time.now.to_date %></kbd></h3></div>
+<table  data-toggle="table"
+    data-pagination="true"
+        data-pagination-loop ="false" >
   <thead>
-    <tr>
-      <th>Checkin time</th>
-      <th>Checkout time</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
+    <th>NO.</th>
+    <th>Code</th>
+    <th>Fullname</th>
+    <th>Checkin Time</th>
+    <th>Action</th>
   </thead>
 
   <tbody>
-    <% @serves.each do |serf| %>
-      <tr>
-        <td><%= serf.checkin_time %></td>
-        <td><%= serf.checkout_time %></td>
-        <td><%= serf.date %></td>
-        <td><%= link_to 'Show', serf %></td>
-        <td><%= link_to 'Edit', edit_serf_path(serf) %></td>
-        <td><%= link_to 'Destroy', serf, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @serves.each_with_index do |s,i| %>
+      <% if s.member %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= s.member.member_id %></td>
+          <td><%= s.member.user.firstname %> <%= s.member.user.lastname %></td>
+          <td><%= s.checkin_time %></td>
+          <td><%= link_to 'Checkout', s, method: :patch, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
+
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><%= link_to 'Checkout All', serves_checkout_all_path, method: :post, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  </tfoot>
+  
 </table>
-
-<br>
-
-<%= link_to 'New Serf', new_serf_path %>

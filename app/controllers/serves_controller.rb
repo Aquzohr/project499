@@ -4,7 +4,12 @@ class ServesController < ApplicationController
   # GET /serves
   # GET /serves.json
   def index
-    @serves = Serve.all
+
+    @serve = Serve.new
+    @serves = Serve.where(checkout_time: nil).order(checkin_time: :desc)
+
+    @lastCheckin = Serve.where(checkout_time: nil).last
+
   end
 
   # GET /serves/1
@@ -28,7 +33,7 @@ class ServesController < ApplicationController
 
     respond_to do |format|
       if @serf.save
-        format.html { redirect_to @serf, notice: 'Serve was successfully created.' }
+        format.html { redirect_to serves_path, notice: 'Serve was successfully created.' }
         format.json { render :show, status: :created, location: @serf }
       else
         format.html { render :new }
@@ -41,8 +46,8 @@ class ServesController < ApplicationController
   # PATCH/PUT /serves/1.json
   def update
     respond_to do |format|
-      if @serf.update(serf_params)
-        format.html { redirect_to @serf, notice: 'Serve was successfully updated.' }
+      if @serf.update(checkout_time: Time.now.strftime("%H:%M:%S"))
+        format.html { redirect_to serves_path, notice: 'Serve was successfully updated.' }
         format.json { render :show, status: :ok, location: @serf }
       else
         format.html { render :edit }
@@ -61,6 +66,18 @@ class ServesController < ApplicationController
     end
   end
 
+  def checkout_all
+    respond_to do |format|
+       if Serve.where(checkout_time: nil).update_all(checkout_time: Time.now.strftime("%H:%M:%S"))
+         format.html { redirect_to serves_path, notice: 'Checkin was successfully updated.' }
+         format.json { render :show, status: :ok, location: @serve }
+       else
+         format.html { render :edit }
+         format.json { render json: @serves.errors, status: :unprocessable_entity }
+       end
+     end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_serf
@@ -69,6 +86,6 @@ class ServesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def serf_params
-      params.require(:serf).permit(:checkin_time, :checkout_time, :date)
+      params.require(:serve).permit(:checkin_time, :checkout_time, :date, :member_id)
     end
 end

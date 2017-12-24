@@ -6,4 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email: 'test@test.com', password: 'password')
+require 'faker'
+
+
+1.upto(60) do |i|
+   User.create(email: Faker::Internet.free_email, password: Faker::Internet.password, firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone)
+end
+
+1.upto(30) do |i|
+	Staff.create(staff_id: 's'+Faker::Address.building_number, position: Faker::Job.position, user_id: i)
+end
+
+31.upto(60) do |i|
+	Member.create(member_id: 'm'+Faker::Address.building_number, start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: i)
+end
+
+
+#Admin
+User.create(email: 'admin@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone)
+Staff.create(position: 'Admin', staff_id: 'admin', user_id: 61)

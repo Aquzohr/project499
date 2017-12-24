@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :receipts
+  
   resources :serves
+  post 'serves/checkout_all'
+
   resources :bookings
   resources :staffs
   resources :members
