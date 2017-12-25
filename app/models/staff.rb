@@ -11,6 +11,8 @@ class Staff < ApplicationRecord
 	has_many :nontrainer_packages, through: :receipts
 	has_many :trainer_packages, through: :receipts
 
+	belongs_to :branch, optional: true, dependent: :destroy
+
 	belongs_to :user, optional: true, dependent: :destroy
 	accepts_nested_attributes_for :user
 	validates_associated :user
@@ -37,6 +39,7 @@ class Staff < ApplicationRecord
         fullname: "#{self.user.firstname} #{self.user.lastname}",
         phone: self.user.phone,
         position: self.position,
+        branch: self.branch.name,
         edit: edit_link(self.id),
         remove: remove_link(self.id),
       }

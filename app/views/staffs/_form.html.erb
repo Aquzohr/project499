@@ -11,18 +11,19 @@
     </div>
   <% end %>
 
-    <%= form.text_field :position, id: :staff_position %>
-    <%= form.text_field :staff_id, id: :staff_staff_id %>
-
     <%= form.fields_for :user do |f| %>
-      <%= f.text_field :firstname %>
-      <%= f.text_field :lastname %>
-      <%= f.text_field :phone %>
       <%= f.email_field :email %>
       <%= f.password_field :password %>
       <%= f.password_field :password_confirmation %>
+      <%= f.text_field :firstname %>
+      <%= f.text_field :lastname %>
+      <%= f.text_field :phone %>
     <% end %>
 
+    <%= form.text_field :position %>
+    <%= form.text_field :staff_id %>
+
+    <%= form.collection_select :branch_id, Branch.all, :id, :name %>
 
     <%= form.submit %>
   </div>

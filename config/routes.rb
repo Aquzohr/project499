@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
   get 'package', to: 'package#index'
 
   scope '/package' do
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :staffs
   resources :members
   resources :announcements
+  resources :branches
+
   devise_for :users
   root 'home#index'
 

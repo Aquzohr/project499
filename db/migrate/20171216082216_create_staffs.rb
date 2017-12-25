@@ -5,6 +5,8 @@ class CreateStaffs < ActiveRecord::Migration[5.0]
       t.string :staff_id
 
       t.belongs_to :user, index: true, foreign_key: true
+      t.belongs_to :branch, index: true, foreign_key: true
+
 
       t.timestamps
     end

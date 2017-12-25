@@ -102,8 +102,10 @@ ActiveRecord::Schema.define(version: 20171216084004) do
     t.string   "position"
     t.string   "staff_id"
     t.integer  "user_id"
+    t.integer  "branch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["branch_id"], name: "index_staffs_on_branch_id", using: :btree
     t.index ["user_id"], name: "index_staffs_on_user_id", using: :btree
   end
 
@@ -146,5 +148,6 @@ ActiveRecord::Schema.define(version: 20171216084004) do
   add_foreign_key "receipts", "trainer_packages"
   add_foreign_key "serves", "members"
   add_foreign_key "serves", "staffs"
+  add_foreign_key "staffs", "branches"
   add_foreign_key "staffs", "users"
 end
