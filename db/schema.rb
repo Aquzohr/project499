@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216084004) do
+ActiveRecord::Schema.define(version: 20171226081816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,10 +47,12 @@ ActiveRecord::Schema.define(version: 20171216084004) do
     t.string   "member_id"
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "freeze_count", default: 0, null: false
+    t.integer  "freeze_count",          default: 0, null: false
     t.integer  "user_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "nontrainer_package_id"
+    t.index ["nontrainer_package_id"], name: "index_members_on_nontrainer_package_id", using: :btree
     t.index ["user_id"], name: "index_members_on_user_id", using: :btree
   end
 
@@ -140,6 +142,7 @@ ActiveRecord::Schema.define(version: 20171216084004) do
   add_foreign_key "announcements", "staffs"
   add_foreign_key "bookings", "members"
   add_foreign_key "bookings", "staffs"
+  add_foreign_key "members", "nontrainer_packages"
   add_foreign_key "members", "users"
   add_foreign_key "package_occupiedbies", "members"
   add_foreign_key "package_occupiedbies", "trainer_packages"

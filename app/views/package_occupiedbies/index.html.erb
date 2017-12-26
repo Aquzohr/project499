@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Package Occupiedbies</h1>
+<%= link_to 'New Package Occupiedby', new_package_occupiedby_path %>
+
+<table  data-toggle="table"
+        data-pagination="true"
+        >
+  <thead>
+    <tr>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Balance session</th>
+      <th>Trainer package</th>
+      <th>Member</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @package_occupiedbies.each do |package_occupiedby| %>
+      <tr>
+        <td><%= package_occupiedby.start_date %></td>
+        <td><%= package_occupiedby.end_date %></td>
+        <td><%= package_occupiedby.balance_session %></td>
+        <td><%= package_occupiedby.trainer_package.name %></td>
+        <td><%= package_occupiedby.member.member_id %></td>
+        <td><%= link_to 'Show', package_occupiedby %></td>
+        <td><%= link_to 'Edit', edit_package_occupiedby_path(package_occupiedby) %></td>
+        <td><%= link_to 'Destroy', package_occupiedby, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

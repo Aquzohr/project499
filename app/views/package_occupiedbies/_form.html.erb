@@ -1,0 +1,21 @@
+<%= bootstrap_form_for(package_occupiedby) do |f| %>
+  <% if package_occupiedby.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(package_occupiedby.errors.count, "error") %> prohibited this package_occupiedby from being saved:</h2>
+
+      <ul>
+      <% package_occupiedby.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.date_select :start_date %>
+    <%= f.date_select :end_date %>
+    <%= f.number_field :balance_session %>
+    <%= f.collection_select :trainer_package_id, TrainerPackage.select(:id, :name), :id, :name %>
+    <%= f.collection_select :member_id, Member.select(:id, :member_id), :id, :member_id %>
+    <%= f.submit %>
+
+<% end %>

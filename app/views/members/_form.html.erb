@@ -11,19 +11,21 @@
     </div>
   <% end %>
 
-    <%= form.text_field :member_id, id: :member_member_id %>
-    <%= form.date_select :start_date, id: :member_start_date %>
-    <%= form.date_select :end_date, id: :member_end_date %>
-    <%= form.number_field :freeze_count, id: :member_freeze_count %>
-
+    <%= form.text_field :member_id, label: "Member ID" %>
+    
     <%= form.fields_for :user do |f| %>
-      <%= f.text_field :firstname %>
-      <%= f.text_field :lastname %>
-      <%= f.text_field :phone %>
       <%= f.email_field :email %>
       <%= f.password_field :password %>
       <%= f.password_field :password_confirmation %>
+      <%= f.text_field :firstname %>
+      <%= f.text_field :lastname %>
+      <%= f.text_field :phone %>
     <% end %>
+
+    <%= form.collection_select :nontrainer_package_id, NontrainerPackage.select(:id, :name), :id, :name %>
+    <%= form.date_select :start_date, id: :member_start_date %>
+    <%= form.date_select :end_date, id: :member_end_date %>
+    <%= form.number_field :freeze_count, id: :member_freeze_count %>
 
     <%= form.submit %>
 <% end %>

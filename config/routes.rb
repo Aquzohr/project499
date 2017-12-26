@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :members
   resources :announcements
   resources :branches
+  resources :package_occupiedbies
 
   devise_for :users
   root 'home#index'

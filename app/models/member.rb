@@ -8,6 +8,8 @@ class Member < ApplicationRecord
 	has_many :package_occupiedby
 	has_many :trainer_package, through: :package_occupiedby
 
+  belongs_to :nontrainer_package
+
 	belongs_to :user, optional: true, dependent: :destroy
 	accepts_nested_attributes_for :user
 	validates_associated :user
@@ -38,6 +40,7 @@ class Member < ApplicationRecord
         member_id: self.member_id,
         fullname: "#{self.user.firstname} #{self.user.lastname}",
         phone: self.user.phone,
+        nontrainer_package: self.nontrainer_package.name,
         start_date: self.start_date,
         end_date: self.end_date,
         freeze_count: self.freeze_count,
