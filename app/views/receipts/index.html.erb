@@ -2,26 +2,48 @@
 
 <h1>Receipts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render 'form', receipt: @receipt %>
 
-  <tbody>
-    <% @receipts.each do |receipt| %>
+
+<div class="container">
+<hr>
+
+  <table  data-toggle="table"
+          data-pagination="true"
+          >
+    <thead>
       <tr>
-        <td><%= receipt.date %></td>
-        <td><%= link_to 'Show', receipt %></td>
-        <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
-        <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nontrainer Package</th>
+        <th>Trainer Package</th>
+        <th>Date</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @receipts.each do |receipt| %>
+        <tr>
+          <% if receipt.nontrainer_package %>
+            <td><%= receipt.nontrainer_package.price %></td>
+          <% else %>
+            <td>ไม่ได้ระบุ</td>
+          <% end %>
+          <% if receipt.trainer_package %>
+            <td><%= receipt.trainer_package.price %></td>
+          <% else %>
+            <td>ไม่ได้ระบุ</td>
+          <% end %>
+          <td><%= receipt.date %></td>
+          <td><%= link_to 'Print', receipt %></td>
+          <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
+          <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+</div>
 
-<%= link_to 'New Receipt', new_receipt_path %>
+

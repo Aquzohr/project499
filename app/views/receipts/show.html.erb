@@ -1,9 +1,82 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <address>
+                        <strong>Power House Fitness Center</strong>
+                        <br>
+                        50 Nimmana Haeminda Rd Soi 6, Tambon Su Thep, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50000
+                        <br>
+                        <abbr>Phone:</abbr> 053-400-521
+                    </address>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                    <p>
+                        <em><%= @receipt.date %></em>
+                    </p>
+                    <p>
+                        <em>Receipt #: <%= @receipt.id %></em>
+                    </p>
+                    <p>
+                        <em>By : <%= @receipt.staff.user.firstname %></em>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <h1>Receipt</h1>
+                </div>
+                </span>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th class="text-right">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-<p>
-  <strong>Date:</strong>
-  <%= @receipt.date %>
-</p>
+                    		<% i=0 %>
+                        <% total=0 %>
 
-<%= link_to 'Edit', edit_receipt_path(@receipt) %> |
-<%= link_to 'Back', receipts_path %>
+                    		<tr>
+                    			<% if @receipt.nontrainer_package %>
+                    			  <td><%= @receipt.nontrainer_package.name %></td>
+                    				<td class="text-right"><%= @receipt.nontrainer_package.price %></td>
+                            <% total = @receipt.nontrainer_package.price.to_i %>
+								          <% else %>
+								            <% i+=1 %>
+								          <% end %>
+                    		</tr>
+
+                    		<tr>
+                    			<% if @receipt.trainer_package %>
+                    				<td><%= @receipt.trainer_package.name %></td>
+                    				<td class="text-right"><%= @receipt.trainer_package.price %></td>
+                            <% total += @receipt.trainer_package.price.to_i %>
+								          <% else %>
+								            <% i+=1 %>
+								          <% end %>
+                    		</tr>
+
+                    		<% if i==2 %>
+                    			<tr>
+                    				<td>เกิดข้อผิดพลาดหรือไม่มีแพ็คเกจที่เลือกไว้</td>
+                    				<td class="text-right">NaN</td>
+                    			</tr>
+                    		<% end %>
+
+                        <tr>
+                          <td class="text"><strong>Total</strong></td>
+                          <td class="text-right"><strong><%= total  %></strong></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-success btn-lg btn-block" onclick="printReceipt()">
+                    Confirm   <span class="glyphicon glyphicon-chevron-right"></span>
+                </button></td>
+            </div>
+        </div>
+    </div>

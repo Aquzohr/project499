@@ -1,4 +1,4 @@
-<%= form_with(model: receipt, local: true) do |form| %>
+<%= bootstrap_form_for(receipt) do |form| %>
   <% if receipt.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(receipt.errors.count, "error") %> prohibited this receipt from being saved:</h2>
@@ -11,12 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date, id: :receipt_date %>
-  </div>
+  <%= form.collection_select :nontrainer_package_id, NontrainerPackage.select(:id, :name), :id, :name, prompt: true %>
+  <%= form.collection_select :trainer_package_id, TrainerPackage.select(:id, :name), :id, :name, prompt: true %>
+  <%= form.date_select :date %>
+  <%= form.hidden_field :staff_id, value: current_user.staff.id %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <%= form.submit %>
   </div>
 <% end %>

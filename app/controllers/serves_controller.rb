@@ -86,6 +86,6 @@ class ServesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def serf_params
-      params.require(:serve).permit(:checkin_time, :checkout_time, :date, :member_id)
+      params.require(:serve).permit(:checkin_time, :checkout_time, :date, :member_id, :staff_id)
     end
 end
