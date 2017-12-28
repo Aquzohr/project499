@@ -1,0 +1,36 @@
+<br>
+
+<%= bootstrap_form_tag url: '/report' do |f| %>
+  <%= f.collection_select :member_id, Member.select(:id, :member_id), :id, :member_id , hide_label: true, prompt: true %>
+  <%= f.submit "View Serve Report" %>
+<% end %>
+
+<hr>
+
+<table  data-toggle="table"
+        data-pagination="true"
+        >
+  <thead>
+    <tr>
+      <th>Member Name</th>
+      <th>Date</th>
+      <th>Checkin Time</th>
+      <th>Checkout Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+ 		<% if @serves %>
+	    <% @serves.each do |serve|%>
+	      <tr>
+	        <td><%= serve.member.user.firstname %></td>
+	        <td><%= serve.date %></td>
+	        <td><%= serve.checkin_time %></td>
+	        <td><%= serve.checkout_time %></td>
+	      </tr>
+	    <% end %>
+    <% end %>
+
+  </tbody>
+</table>

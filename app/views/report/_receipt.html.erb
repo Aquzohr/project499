@@ -1,0 +1,46 @@
+<br>
+
+<%= bootstrap_form_tag url: '/report' do |f| %>
+  <%= f.date_field :start_date %>
+  <%= f.date_field :end_date %>
+  <%= f.submit "View Receipts Report" %>
+<% end %>
+
+<hr>
+
+<table  data-toggle="table"
+        data-pagination="true"
+        >
+  <thead>
+    <tr>
+      <th>Package Name</th>
+      <th>Date</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+ 		<% if @receipts %>
+	    <% @receipts.each do |r|%>
+		    <% if r.nontrainer_package %>
+		      <tr>
+		        <td><%= r.nontrainer_package.name %></td>
+		        <td><%= r.date %></td>
+		        <td><%= r.nontrainer_package.price %></td>
+		      </tr>
+		    <% end %>
+
+		    <% if r.trainer_package %>
+		      <tr>
+		        <td><%= r.trainer_package.name %></td>
+		        <td><%= r.date %></td>
+		        <td><%= r.trainer_package.price %></td>
+		      </tr>
+		    <% end %>
+
+	    <% end %>
+    <% end %>
+
+  </tbody>
+</table>

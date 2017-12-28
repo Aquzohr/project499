@@ -5,7 +5,7 @@
 
 <%= bootstrap_form_for(@serve) do |f| %>
 
-  <%= f.collection_select :member_id, Member.select(:id, :member_id), :id, :member_id , hide_label: true, placeholder: "MEMBER CODE", autofocus: true %>
+  <%= f.collection_select :member_id, Member.select(:id, :member_id), :id, :member_id , hide_label: true, prompt: true %>
   <%= f.hidden_field :checkin_time, value: Time.now.strftime("%H:%M:%S") %>
   <%= f.hidden_field :date, value: Time.now %>
   <%= f.hidden_field :staff_id, value: current_user.staff.id %>

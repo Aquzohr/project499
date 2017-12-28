@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  get 'report', to: 'report#index'
+  post 'report', to: 'report#index'
+
   get 'package', to: 'package#index'
 
   scope '/package' do
