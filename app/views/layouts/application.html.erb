@@ -24,29 +24,55 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="<%= serves_path %>" data-turbolinks="false">Serve</a></li>
-            <li><a href="<%= package_occupiedbies_path %>" data-turbolinks="false">Trainer Service</a></li>
-            <li><a href="<%= bookings_path %>" data-turbolinks="false">Booking</a></li>
-            <li><a href="<%= receipts_path %>" data-turbolinks="false">Receipt</a></li>
-            <li><a href="<%= report_path %>" data-turbolinks="false">Report</a></li>
+
+            <% if current_user %>
+
+              <% if current_user.role=="staff" %>
+
+                <% if current_user.staff %>
+                <% if current_user.staff.position!="Admin" %>
+                  <li><a href="<%= serves_path %>" data-turbolinks="false">Serve</a></li>
+                  <li><a href="<%= package_occupiedbies_path %>" data-turbolinks="false">Trainer Service</a></li>
+                  <li><a href="<%= bookings_path %>" data-turbolinks="false">Booking</a></li>
+                  <li><a href="<%= receipts_path %>" data-turbolinks="false">Receipt</a></li>
+                <% else %>
+                  <li><a href="<%= report_path %>" data-turbolinks="false">Report</a></li>
+                <% end %>
+                <% end %>
+
+              <% end %>
+            <% end %>
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
 
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span> Manage <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="<%= announcements_path %>" data-turbolinks="false">Announcement</a></li>
-                <li><a href="<%= package_path %>" data-turbolinks="false">Package</a></li>
-                <li><a href="<%= members_path %>" data-turbolinks="false">Member</a></li>
-                <li><a href="<%= staffs_path %>" data-turbolinks="false">Staff</a></li>
-                <li><a href="<%= branches_path %>" data-turbolinks="false">Branch</a></li>
+            <% if current_user %>
+              <% if current_user.role=="staff" %>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span> Manage <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <% if current_user.staff.position!="Admin" %>
+                      <li><a href="<%= announcements_path %>" data-turbolinks="false">Announcement</a></li>
+                      <li><a href="<%= package_path %>" data-turbolinks="false">Package</a></li>
+                      <li><a href="<%= members_path %>" data-turbolinks="false">Member</a></li>
+                    <% else %>
+                      <li><a href="<%= staffs_path %>" data-turbolinks="false">Staff</a></li>
+                      <li><a href="<%= branches_path %>" data-turbolinks="false">Branch</a></li>
+                    <% end %>
+                  </ul>
+                </li>
+              <% end %>
+            <% end %>
 
-              </ul>
-            </li>
             <% if user_signed_in? %>
               <li>
                 <%= link_to(destroy_user_session_path, :method => :delete) do %> 
-                  <span class="glyphicon glyphicon-log-out"></span> Logout
+                  <span class="glyphicon glyphicon-log-out"></span> Logout | 
+                  <% if current_user.staff %>
+                   <%= current_user.staff.position %>
+                   <% else %>
+                    Member
+                  <% end %>
                 <% end %>
                 
               </li>       

@@ -24,13 +24,19 @@ end
 end
 
 #create USER
-1.upto(60) do |i|
-   User.create(email: Faker::Internet.free_email, password: Faker::Internet.password, firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone)
+1.upto(30) do |i|
+   User.create(email: Faker::Internet.unique.free_email, password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
+end
+
+1.upto(30) do |i|
+   User.create(email: Faker::Internet.unique.free_email, password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'member')
 end
 
 #create Staff
+position = ["Sale Representative","Trainer"]
+
 1.upto(30) do |i|
-	Staff.create(staff_id: 's'+Faker::Address.building_number, position: Faker::Job.position, user_id: i, branch_id: rand(1..3))
+	Staff.create(staff_id: 's'+Faker::Address.building_number, position: position[rand(0..1)], user_id: i, branch_id: rand(1..3))
 end
 
 #create Member
@@ -52,7 +58,7 @@ end
 
 
 #Admin
-User.create(email: 'admin@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone)
+User.create(email: 'admin@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
 Staff.create(position: 'Admin', staff_id: 'admin', user_id: 61, branch_id: 1)
 
 puts "Fake Infomation Complete!!"

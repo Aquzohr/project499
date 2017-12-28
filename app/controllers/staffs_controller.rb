@@ -82,6 +82,6 @@ class StaffsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
       params.require(:staff).permit(:staff_id, :position, :branch_id, 
-        user_attributes: [:id, :firstname, :lastname, :phone, :email, :password, :password_confirmation])
+        user_attributes: [:id, :firstname, :lastname, :phone, :role, :email, :password, :password_confirmation])
     end
 end

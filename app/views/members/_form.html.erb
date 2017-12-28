@@ -20,6 +20,7 @@
       <%= f.text_field :firstname %>
       <%= f.text_field :lastname %>
       <%= f.text_field :phone %>
+      <%= f.hidden_field :role, value: 'member' %>
     <% end %>
 
     <%= form.collection_select :nontrainer_package_id, NontrainerPackage.select(:id, :name), :id, :name %>
