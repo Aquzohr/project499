@@ -4,7 +4,15 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
+
+    if current_user.role=="staff"
+      @bookings = Booking.all
+    end
+
+    if current_user.role=="member"
+      @bookings = Booking.where(member_id: current_user.member.id)
+    end
+
   end
 
   # GET /bookings/1

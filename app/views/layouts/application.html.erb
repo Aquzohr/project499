@@ -30,17 +30,22 @@
               <% if current_user.role=="staff" %>
 
                 <% if current_user.staff %>
-                <% if current_user.staff.position!="Admin" %>
-                  <li><a href="<%= serves_path %>" data-turbolinks="false">Serve</a></li>
-                  <li><a href="<%= package_occupiedbies_path %>" data-turbolinks="false">Trainer Service</a></li>
-                  <li><a href="<%= bookings_path %>" data-turbolinks="false">Booking</a></li>
-                  <li><a href="<%= receipts_path %>" data-turbolinks="false">Receipt</a></li>
-                <% else %>
-                  <li><a href="<%= report_path %>" data-turbolinks="false">Report</a></li>
-                <% end %>
+                  <% if current_user.staff.position!="Admin" %>
+                    <li><a href="<%= serves_path %>" data-turbolinks="false">Serve</a></li>
+                    <li><a href="<%= package_occupiedbies_path %>" data-turbolinks="false">Trainer Service</a></li>
+                    <li><a href="<%= bookings_path %>" data-turbolinks="false">Booking</a></li>
+                    <li><a href="<%= receipts_path %>" data-turbolinks="false">Receipt</a></li>
+                  <% else %>
+                    <li><a href="<%= report_path %>" data-turbolinks="false">Report</a></li>
+                  <% end %>
                 <% end %>
 
               <% end %>
+
+              <% if current_user.role="member" %>
+                <li><a href="<%= bookings_path %>" data-turbolinks="false">Booking</a></li>
+              <% end %>
+
             <% end %>
 
           </ul>
