@@ -20,6 +20,9 @@
  
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 
 .bootstrap-table .table > thead > tr > th {
     border-bottom: 2px solid #ddd !important;
