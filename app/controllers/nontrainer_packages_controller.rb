@@ -28,7 +28,7 @@ class NontrainerPackagesController < ApplicationController
 
     respond_to do |format|
       if @nontrainer_package.save
-        format.html { redirect_to @nontrainer_package, notice: 'Nontrainer package was successfully created.' }
+        format.html { redirect_to package_path, notice: 'Nontrainer package was successfully created.' }
         format.json { render :show, status: :created, location: @nontrainer_package }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class NontrainerPackagesController < ApplicationController
   def update
     respond_to do |format|
       if @nontrainer_package.update(nontrainer_package_params)
-        format.html { redirect_to @nontrainer_package, notice: 'Nontrainer package was successfully updated.' }
+        format.html { redirect_to package_path, notice: 'Nontrainer package was successfully updated.' }
         format.json { render :show, status: :ok, location: @nontrainer_package }
       else
         format.html { render :edit }

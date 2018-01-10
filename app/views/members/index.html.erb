@@ -1,7 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <h1>Members</h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to 'New Member', new_member_path, class: 'btn btn-info'  %>
+  </div>
+</div>
 
-<h1>Members</h1>
-<%= link_to 'New Member', new_member_path %>
 
 <table id="table" 
        data-toggle="table"

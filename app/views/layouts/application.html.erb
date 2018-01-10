@@ -96,7 +96,15 @@
     </nav>
     
     <div class="container">
+
+      <% unless notice.blank? %>
+        <div class="alert alert-success">
+          <strong>Success!</strong> <%= notice %> 
+        </div>
+      <% end %>
+
       <%= yield %>
+      
     </div>
 
   </body>

@@ -28,7 +28,7 @@ class PackageOccupiedbiesController < ApplicationController
 
     respond_to do |format|
       if @package_occupiedby.save
-        format.html { redirect_to @package_occupiedby, notice: 'Package occupiedby was successfully created.' }
+        format.html { redirect_to package_occupiedbies_path, notice: 'Package occupiedby was successfully created.' }
         format.json { render :show, status: :created, location: @package_occupiedby }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PackageOccupiedbiesController < ApplicationController
   def update
     respond_to do |format|
       if @package_occupiedby.update(package_occupiedby_params)
-        format.html { redirect_to @package_occupiedby, notice: 'Package occupiedby was successfully updated.' }
+        format.html { redirect_to package_occupiedbies_path, notice: 'Package occupiedby was successfully updated.' }
         format.json { render :show, status: :ok, location: @package_occupiedby }
       else
         format.html { render :edit }
