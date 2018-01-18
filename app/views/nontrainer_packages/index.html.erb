@@ -3,7 +3,7 @@
     <h1>Nontrainer Packages</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to 'New Nontrainer Package', new_nontrainer_package_path, class: 'btn btn-info' %>
+    <%= link_to 'New Nontrainer Package', new_nontrainer_package_path, class: 'btn btn-info new' %>
   </div>
 </div>
 
@@ -17,7 +17,6 @@
   <tbody>
     <% @nontrainer_packages.each do |nontrainer_package| %>
       <tr>
-        <td><%= link_to 'Show', nontrainer_package %></td>
         <td><%= link_to 'Edit', edit_nontrainer_package_path(nontrainer_package) %></td>
         <td><%= link_to 'Destroy', nontrainer_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

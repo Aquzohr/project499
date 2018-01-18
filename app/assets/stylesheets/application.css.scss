@@ -23,9 +23,21 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-a.btn{
+tbody > td{
+    vertical-align: middle;
+}
+
+.td-date{
+    width: 100px;
+}
+
+a.btn.new{
 	color: white;
 	margin-top: 22px;
+}
+
+a.btn{
+	color: white;
 }
 
 

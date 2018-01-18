@@ -26,11 +26,11 @@ class Member < ApplicationRecord
   end
 
 	def edit_link(id)
-	  "<a href='/members/#{id}/edit'>Edit</a>"
+	  "<a href='/members/#{id}/edit' class='btn btn-warning btn-block'>Edit</a>"
 	end
 
 	def remove_link(id)
-	  "<a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='/members/#{id}'>Destroy</a>"
+	  "<a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='/members/#{id}' class='btn btn-danger btn-block'>Destroy</a>"
 	end
 
   def as_json(options={})

@@ -3,7 +3,7 @@
     <h1>Branches</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to 'New Branch', new_branch_path, class: 'btn btn-info' %>
+    <%= link_to 'New Branch', new_branch_path, class: 'btn btn-info new' %>
   </div>
 </div>
 
@@ -16,7 +16,6 @@
       <th>Address</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -25,9 +24,8 @@
       <tr>
         <td><%= branch.name %></td>
         <td><%= branch.address %></td>
-        <td><%= link_to 'Show', branch %></td>
-        <td><%= link_to 'Edit', edit_branch_path(branch) %></td>
-        <td><%= link_to 'Destroy', branch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_branch_path(branch), class: 'btn btn-warning btn-block' %></td>
+        <td><%= link_to 'Destroy', branch, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
     <% end %>
   </tbody>

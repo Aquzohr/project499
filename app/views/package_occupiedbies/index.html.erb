@@ -3,7 +3,7 @@
     <h1>Package Occupiedbies</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to 'New Package Occupiedby', new_package_occupiedby_path, class: 'btn btn-info'  %>
+    <%= link_to 'New Package Occupiedby', new_package_occupiedby_path, class: 'btn btn-info new'  %>
   </div>
 </div>
 
@@ -19,7 +19,6 @@
       <th>Member</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -31,9 +30,8 @@
         <td><%= package_occupiedby.balance_session %></td>
         <td><%= package_occupiedby.trainer_package.name %></td>
         <td><%= package_occupiedby.member.member_id %></td>
-        <td><%= link_to 'Show', package_occupiedby %></td>
-        <td><%= link_to 'Edit', edit_package_occupiedby_path(package_occupiedby) %></td>
-        <td><%= link_to 'Destroy', package_occupiedby, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_package_occupiedby_path(package_occupiedby), class: 'btn btn-warning btn-block' %></td>
+        <td><%= link_to 'Destroy', package_occupiedby, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
     <% end %>
   </tbody>

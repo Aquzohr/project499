@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-6 text-right">
     <% if current_user.role=="staff" %>
-      <%= link_to 'New Booking', new_booking_path, class: 'btn btn-info' %>
+      <%= link_to 'New Booking', new_booking_path, class: 'btn btn-info new' %>
     <% end %>
   </div>
 </div>
@@ -20,7 +20,6 @@
       <th>Time</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -33,9 +32,8 @@
         <td><%= booking.time %></td>
 
         <% if current_user.role=="staff" %>
-          <td><%= link_to 'Show', booking %></td>
-          <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-          <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_booking_path(booking), class: 'btn btn-warning btn-block' %></td>
+          <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
         <% end %>
 
       </tr>

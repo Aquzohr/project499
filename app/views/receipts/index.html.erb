@@ -35,9 +35,9 @@
             <td>ไม่ได้ระบุ</td>
           <% end %>
           <td><%= receipt.date %></td>
-          <td><%= link_to 'Print', receipt %></td>
-          <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
-          <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Print', receipt, class: 'btn btn-primary btn-block' %></td>
+          <td><%= link_to 'Edit', edit_receipt_path(receipt), class: 'btn btn-warning btn-block' %></td>
+          <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
         </tr>
       <% end %>
     </tbody>

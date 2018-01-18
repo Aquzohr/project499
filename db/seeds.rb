@@ -65,6 +65,6 @@ Staff.create(position: 'Staff', staff_id: 'admin', user_id: 62, branch_id: 1)
 
 #Member
 User.create(email: 'member@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'member')
-Member.create(member_id: 'm'+Faker::Address.building_number, start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: 63, nontrainer_package_id: rand(1..30))
+Member.create(member_id: 'm_test_001', start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: 63, nontrainer_package_id: rand(1..30))
 
 puts "Fake Infomation Complete!"

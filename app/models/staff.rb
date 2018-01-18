@@ -24,11 +24,11 @@ class Staff < ApplicationRecord
 	end
 
 	def edit_link(id)
-	  "<a href='/staffs/#{id}/edit'>Edit</a>"
+	  "<a href='/staffs/#{id}/edit' class='btn btn-warning btn-block'>Edit</a>"
 	end
 
 	def remove_link(id)
-	  "<a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='/staffs/#{id}'>Destroy</a>"
+	  "<a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='/staffs/#{id}' class='btn btn-danger btn-block'>Destroy</a>"
 	end
 
   def as_json(options={})

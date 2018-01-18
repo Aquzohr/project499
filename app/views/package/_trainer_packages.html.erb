@@ -3,7 +3,7 @@
     <h1>Trainer Packages</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to 'New Trainer Package', new_trainer_package_path,class: 'btn btn-info' %>
+    <%= link_to 'New Trainer Package', new_trainer_package_path,class: 'btn btn-info new' %>
   </div>
 </div>
 
@@ -17,7 +17,6 @@
       <th>Session</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -27,9 +26,8 @@
         <td><%= trainer_package.name %></td>
         <td><%= trainer_package.price %></td>
         <td><%= trainer_package.session %></td>
-        <td><%= link_to 'Show', trainer_package %></td>
-        <td><%= link_to 'Edit', edit_trainer_package_path(trainer_package) %></td>
-        <td><%= link_to 'Destroy', trainer_package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_trainer_package_path(trainer_package), class: 'btn btn-warning btn-block' %></td>
+        <td><%= link_to 'Destroy', trainer_package, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
     <% end %>
   </tbody>
