@@ -1,20 +1,30 @@
-<h2>Log in</h2>
-
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-warning" %>
-<% end %>
+<div class="container">
 
 
-<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	<h2>Log in</h2>
 
-    <%= f.email_field :email, autofocus: true %>
-    <%= f.password_field :password, autocomplete: "off" %>
+	<% flash.each do |name, msg| %>
+	  <%= content_tag :div, msg, id: "flash_#{name}", class: "alert alert-warning" %>
+	<% end %>
 
-    <% if devise_mapping.rememberable? %>
-        <%= f.check_box :remember_me %>
-    <% end %>
 
-    <%= f.submit "Log in" %>
+	<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<% end %>
+			<%= f.email_field :email, autofocus: true %>
+
+
+	    <%= f.password_field :password, autocomplete: "off" %>
+
+	    <% if devise_mapping.rememberable? %>
+	        <%= f.check_box :remember_me %>
+	    <% end %>
+
+	    <%= f.submit "Log in" %>
+
+
+	<% end %>
+
+
+</div>
+
 
