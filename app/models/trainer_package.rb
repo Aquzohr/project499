@@ -6,4 +6,6 @@ class TrainerPackage < ApplicationRecord
 	has_many :nontrainer_packages, through: :receipts
 	has_many :staffs, through: :receipts
 
+	validates_presence_of :name
+
 end

@@ -36,7 +36,7 @@ class ServesController < ApplicationController
         format.html { redirect_to serves_path, notice: 'Serve was successfully created.' }
         format.json { render :show, status: :created, location: @serf }
       else
-        format.html { render :new }
+        format.html { redirect_to serves_path }
         format.json { render json: @serf.errors, status: :unprocessable_entity }
       end
     end

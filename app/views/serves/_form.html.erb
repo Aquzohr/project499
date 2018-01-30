@@ -1,32 +1,10 @@
-<%= form_with(model: serf, local: true) do |form| %>
-  <% if serf.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(serf.errors.count, "error") %> prohibited this serf from being saved:</h2>
 
-      <ul>
-      <% serf.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= bootstrap_form_for(serf) do |f| %>
 
-  <div class="field">
-    <%= form.label :checkin_time %>
-    <%= form.text_field :checkin_time, id: :serf_checkin_time %>
-  </div>
+  <%= f.collection_select :member_id, Member.select(:id, :member_id), :id, :member_id , hide_label: true, prompt: true %>
+  <%= f.hidden_field :checkin_time, value: Time.now.strftime("%H:%M:%S") %>
+  <%= f.hidden_field :date, value: Time.now %>
+  <%= f.hidden_field :staff_id, value: current_user.staff.id %>
+  <%= f.submit 'Checkin' %>
 
-  <div class="field">
-    <%= form.label :checkout_time %>
-    <%= form.text_field :checkout_time, id: :serf_checkout_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date, id: :serf_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
