@@ -13,6 +13,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'devise', git: 'https://github.com/plataformatec/devise' #, ref: '88e9a85'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'font-awesome-sass', '~> 4.7.0'
+gem 'jquery-validation-rails'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
