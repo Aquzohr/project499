@@ -19,8 +19,6 @@
 //= require bootstrap-table
 //= require select2
 
-
-
 $(function() { 
     // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {

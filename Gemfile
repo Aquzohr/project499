@@ -15,6 +15,9 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'jquery-validation-rails'
 
+#theme
+gem 'jquery-easing-rails', '~> 0.0.2'
+gem 'bootswatch-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
