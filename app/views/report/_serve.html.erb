@@ -1,7 +1,7 @@
 <br>
 
 <%= bootstrap_form_tag url: '/report', :html => { :id => 'serve_form' } do |f| %>
-  <%= f.collection_select :member_id, Member.select(:id, :member_id), :id, :member_id , hide_label: true, prompt: true %>
+  <%= f.collection_select :member_id, Member.select(:id, :member_code), :id, :member_code , hide_label: true, prompt: true %>
   <%= f.submit "View Serve Report" %>
 <% end %>
 

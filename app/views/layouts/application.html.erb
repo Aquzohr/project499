@@ -63,7 +63,7 @@
                   <ul class="dropdown-menu">
                     <% if current_user.staff.position!="Admin" %>
                       <li><a href="<%= announcements_path %>" data-turbolinks="false"><%= icon('bullhorn') %> Announcement</a></li>
-                      <li><a href="<%= package_path %>" data-turbolinks="false"><%= icon('ravelry') %> Package</a></li>
+                      <li><a href="<%= packages_path %>" data-turbolinks="false"><%= icon('ravelry') %> Package</a></li>
                       <li><a href="<%= members_path %>" data-turbolinks="false"><%= icon('user-o') %> Member</a></li>
                     <% else %>
                       <li><a href="<%= staffs_path %>" data-turbolinks="false"><%= icon('user-circle-o') %> Staff</a></li>

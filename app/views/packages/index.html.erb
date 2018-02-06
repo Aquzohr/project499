@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div id="menu1" class="tab-pane fade">
+      <h3>Nontrainer Package</h3>
+      <hr>
+      <%= render 'nt_form', package: @package %>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Trainer Package</h3>
+      <%= render 't_form', package: @package %>
+
+    </div>
+
+  </div>

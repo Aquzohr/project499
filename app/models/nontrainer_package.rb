@@ -1,9 +1,12 @@
 class NontrainerPackage < ApplicationRecord
-	has_many :receipts
-	has_many :staffs, through: :receipts
-	has_many :trainer_packages, through: :receipts
-	has_many :members
+  has_many :members
 
-	validates_presence_of :name
+  belongs_to :package, optional: true, dependent: :destroy
+
+  def name
+    if self.package.name
+      self.package.name
+    end
+  end
 
 end

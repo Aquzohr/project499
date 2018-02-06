@@ -8,16 +8,21 @@ class Member < ApplicationRecord
 	has_many :package_occupiedby
 	has_many :trainer_package, through: :package_occupiedby
 
+  has_many :receipts
+  has_many :staffs, through: :receipts
+
   belongs_to :nontrainer_package
 
 	belongs_to :user, optional: true, dependent: :destroy
 	accepts_nested_attributes_for :user
 	validates_associated :user
 
+  validates :member_code, presence: true, uniqueness: true
+
   def self.search(search)
 	  wildcard_search = "%#{search}%"
 
-	  joins(:user).where("member_id LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
+	  joins(:user).where("member_code LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
 	end
 
   def self.fullname(id)
@@ -37,7 +42,7 @@ class Member < ApplicationRecord
 
     if options[:index]
       return {
-        member_id: self.member_id,
+        member_code: self.member_code,
         fullname: "#{self.user.firstname} #{self.user.lastname}",
         phone: self.user.phone,
         nontrainer_package: self.nontrainer_package.name,

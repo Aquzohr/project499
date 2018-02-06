@@ -19,19 +19,9 @@
  */
  
 @import "bootstrap-sprockets";
-// Import cerulean variables
-@import "bootswatch/Lumen/variables";
-
-// Then bootstrap itself
 @import "bootstrap";
-
-// And finally bootswatch style itself
-@import "bootswatch/Lumen/bootswatch";
-
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-
 
 tbody > td{
     vertical-align: middle;

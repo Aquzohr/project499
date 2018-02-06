@@ -1,6 +1,6 @@
 <%= bootstrap_form_for(member) do |form| %>
 
-    <%= form.text_field :member_id, label: "Member ID" %>
+    <%= form.text_field :member_code %>
     
     <%= form.fields_for :user do |f| %>
       <%= f.email_field :email %>
@@ -12,7 +12,7 @@
       <%= f.hidden_field :role, value: 'member' %>
     <% end %>
 
-    <%= form.collection_select :nontrainer_package_id, NontrainerPackage.select(:id, :name), :id, :name %>
+    <%= form.collection_select :nontrainer_package_id, NontrainerPackage.all, :id, :name %>
     <%= form.date_select :start_date, id: :member_start_date %>
     <%= form.date_select :end_date, id: :member_end_date %>
     <%= form.number_field :freeze_count, id: :member_freeze_count %>

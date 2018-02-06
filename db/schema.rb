@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226081816) do
+ActiveRecord::Schema.define(version: 20180206044453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171226081816) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.string   "member_id"
+    t.string   "member_code",                       null: false
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "freeze_count",          default: 0, null: false
@@ -57,11 +57,11 @@ ActiveRecord::Schema.define(version: 20171226081816) do
   end
 
   create_table "nontrainer_packages", force: :cascade do |t|
-    t.string   "name"
-    t.float    "price",       default: 0.0, null: false
-    t.integer  "freeze_time", default: 0,   null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "freeze_time", default: 0, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "package_id"
+    t.index ["package_id"], name: "index_nontrainer_packages_on_package_id", using: :btree
   end
 
   create_table "package_occupiedbies", force: :cascade do |t|
@@ -76,16 +76,22 @@ ActiveRecord::Schema.define(version: 20171226081816) do
     t.index ["trainer_package_id"], name: "index_package_occupiedbies_on_trainer_package_id", using: :btree
   end
 
+  create_table "packages", force: :cascade do |t|
+    t.string   "name"
+    t.float    "price",      default: 0.0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "receipts", force: :cascade do |t|
+    t.string   "des"
     t.date     "date"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.integer  "trainer_package_id"
-    t.integer  "nontrainer_package_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "staff_id"
-    t.index ["nontrainer_package_id"], name: "index_receipts_on_nontrainer_package_id", using: :btree
+    t.integer  "member_id"
+    t.index ["member_id"], name: "index_receipts_on_member_id", using: :btree
     t.index ["staff_id"], name: "index_receipts_on_staff_id", using: :btree
-    t.index ["trainer_package_id"], name: "index_receipts_on_trainer_package_id", using: :btree
   end
 
   create_table "serves", force: :cascade do |t|
@@ -102,21 +108,22 @@ ActiveRecord::Schema.define(version: 20171226081816) do
 
   create_table "staffs", force: :cascade do |t|
     t.string   "position"
-    t.string   "staff_id"
+    t.integer  "status",     default: 1, null: false
+    t.string   "staff_code",             null: false
     t.integer  "user_id"
     t.integer  "branch_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["branch_id"], name: "index_staffs_on_branch_id", using: :btree
     t.index ["user_id"], name: "index_staffs_on_user_id", using: :btree
   end
 
   create_table "trainer_packages", force: :cascade do |t|
-    t.string   "name"
-    t.float    "price",      default: 0.0, null: false
-    t.integer  "session",    default: 0,   null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "session",    default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "package_id"
+    t.index ["package_id"], name: "index_trainer_packages_on_package_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -145,13 +152,14 @@ ActiveRecord::Schema.define(version: 20171226081816) do
   add_foreign_key "bookings", "staffs"
   add_foreign_key "members", "nontrainer_packages"
   add_foreign_key "members", "users"
+  add_foreign_key "nontrainer_packages", "packages"
   add_foreign_key "package_occupiedbies", "members"
   add_foreign_key "package_occupiedbies", "trainer_packages"
-  add_foreign_key "receipts", "nontrainer_packages"
+  add_foreign_key "receipts", "members"
   add_foreign_key "receipts", "staffs"
-  add_foreign_key "receipts", "trainer_packages"
   add_foreign_key "serves", "members"
   add_foreign_key "serves", "staffs"
   add_foreign_key "staffs", "branches"
   add_foreign_key "staffs", "users"
+  add_foreign_key "trainer_packages", "packages"
 end

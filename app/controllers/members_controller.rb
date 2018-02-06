@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
 
-    @members = Member.search(params[:searchText]).order("member_id asc").paginate(page: params[:pageNumber], per_page: params[:pageSize])
+    @members = Member.search(params[:searchText]).order("member_code asc").paginate(page: params[:pageNumber], per_page: params[:pageSize])
 
     respond_to do |f|
       f.html { render 'members/index' }
@@ -82,7 +82,7 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:member_id, :start_date, :end_date, :freeze_count, :nontrainer_package_id, 
+      params.require(:member).permit(:id, :member_code, :start_date, :end_date, :freeze_count, :nontrainer_package_id, 
         user_attributes: [:id, :firstname, :lastname, :phone, :role, :email, :password, :password_confirmation])
     end
 end

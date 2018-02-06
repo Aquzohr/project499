@@ -1,11 +1,14 @@
 class TrainerPackage < ApplicationRecord
   has_many :package_occupiedby
 	has_many :members, through: :package_occupiedby
+	
+	belongs_to :package, optional: true, dependent: :destroy
 
-  has_many :receipts
-	has_many :nontrainer_packages, through: :receipts
-	has_many :staffs, through: :receipts
+	def name
+		if self.package.name
+			self.package.name
+		end
+	end
 
-	validates_presence_of :name
 
 end
