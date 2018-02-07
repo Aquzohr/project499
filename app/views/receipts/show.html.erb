@@ -41,31 +41,8 @@
                         <% total=0 %>
 
                     		<tr>
-                    			<% if @receipt.nontrainer_package %>
-                    			  <td><%= @receipt.nontrainer_package.name %></td>
-                    				<td class="text-right"><%= @receipt.nontrainer_package.price %></td>
-                            <% total = @receipt.nontrainer_package.price.to_i %>
-								          <% else %>
-								            <% i+=1 %>
-								          <% end %>
+                    			  <td><%= @receipt.des %></td>
                     		</tr>
-
-                    		<tr>
-                    			<% if @receipt.trainer_package %>
-                    				<td><%= @receipt.trainer_package.name %></td>
-                    				<td class="text-right"><%= @receipt.trainer_package.price %></td>
-                            <% total += @receipt.trainer_package.price.to_i %>
-								          <% else %>
-								            <% i+=1 %>
-								          <% end %>
-                    		</tr>
-
-                    		<% if i==2 %>
-                    			<tr>
-                    				<td>เกิดข้อผิดพลาดหรือไม่มีแพ็คเกจที่เลือกไว้</td>
-                    				<td class="text-right">NaN</td>
-                    			</tr>
-                    		<% end %>
 
                         <tr>
                           <td class="text"><strong>Total</strong></td>

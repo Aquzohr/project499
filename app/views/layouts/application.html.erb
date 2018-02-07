@@ -11,72 +11,122 @@
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-
   </head>
 
-  <body>
+  <body id="page-top">
 
-    <nav class="navbar navbar-default">
-      <div class="container-fluid container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-          </button>
-          <a class="navbar-brand" href="<%= root_path %>">Powerhouse Fitness Center Chiang Mai</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
+    <a class="menu-toggle rounded" href="#" id="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger" href="<%= root_path %>" data-turbolinks="false">Home</a>
+        </li>
 
-            <% if current_user %>
+        <% if current_user.role=="staff" %>
 
-              <% if current_user.role=="staff" %>
+          <% if current_user.staff %>
+            <% if current_user.staff.position!="Admin" %>
 
-                <% if current_user.staff %>
-                  <% if current_user.staff.position!="Admin" %>
-                    <li><a href="<%= serves_path %>" data-turbolinks="false"><%= icon('street-view') %> Serve</a></li>
-                    <li><a href="<%= package_occupiedbies_path %>" data-turbolinks="false"><%= icon('heartbeat') %> Trainer Service</a></li>
-                    <li><a href="<%= bookings_path %>" data-turbolinks="false"><%= icon('calendar') %> Booking</a></li>
-                    <li><a href="<%= receipts_path %>" data-turbolinks="false"><%= icon('credit-card') %> Receipt</a></li>
-                  <% end %>
-
-                  <li><a href="<%= report_path %>" data-turbolinks="false"><%= icon('book') %> Report</a></li>
-
-                <% end %>
-
-              <% end %>
-
-              <% if current_user.role=="member" %>
-                  <li><a href="<%= bookings_path %>" data-turbolinks="false"><%= icon('calendar') %> Booking</a></li>
-              <% end %>
-
+              <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="<%= serves_path %>" data-turbolinks="false"><%= icon('street-view') %> Serve</a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="<%= package_occupiedbies_path %>" data-turbolinks="false"><%= icon('heartbeat') %> Trainer Service</a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="<%= bookings_path %>" data-turbolinks="false"><%= icon('calendar') %> Booking</a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="<%= receipts_path %>" data-turbolinks="false"><%= icon('credit-card') %> Receipt</a>
+              </li>
             <% end %>
 
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
+            <li class="sidebar-nav-item">
+              <a class="js-scroll-trigger" href="<%= report_path %>" data-turbolinks="false"><%= icon('book') %> Report</a>
+            </li>
 
-            <% if current_user %>
+          <% end %>
+
+        <% end %>
+
+        <% if current_user.role=="member" %>
+            <li class="sidebar-nav-item">
+              <a class="js-scroll-trigger" href="<%= bookings_path %>" data-turbolinks="false"><%= icon('calendar') %> Booking</a>
+            </li>
+        <% end %>
+
+        <% if current_user %>
               <% if current_user.role=="staff" %>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span> Manage <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= icon('calendar') %> Manage
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-slidebar" aria-labelledby="navbarDropdownMenuLink">
                     <% if current_user.staff.position!="Admin" %>
-                      <li><a href="<%= announcements_path %>" data-turbolinks="false"><%= icon('bullhorn') %> Announcement</a></li>
-                      <li><a href="<%= packages_path %>" data-turbolinks="false"><%= icon('ravelry') %> Package</a></li>
-                      <li><a href="<%= members_path %>" data-turbolinks="false"><%= icon('user-o') %> Member</a></li>
+                      <a class="dropdown-item js-scroll-trigger" href="<%= announcements_path %>" data-turbolinks="false"><%= icon('bullhorn') %> Announcement</a>
+                      <a class="dropdown-item js-scroll-trigger" href="<%= members_path %>" data-turbolinks="false"><%= icon('user-o') %> Member</a>
+                      <a class="dropdown-item js-scroll-trigger" href="<%= packages_path %>" data-turbolinks="false"><%= icon('ravelry') %> Package</a>
                     <% else %>
-                      <li><a href="<%= staffs_path %>" data-turbolinks="false"><%= icon('user-circle-o') %> Staff</a></li>
-                      <li><a href="<%= branches_path %>" data-turbolinks="false"><%= icon('code-fork') %> Branch</a></li>
+                      <a class="dropdown-item js-scroll-trigger" href="<%= staffs_path %>" data-turbolinks="false"><%= icon('user-circle-o') %> Staff</a>
+                      <a class="dropdown-item js-scroll-trigger" href="<%= branches_path %>" data-turbolinks="false"><%= icon('code-fork') %> Branch</a>
                     <% end %>
-                  </ul>
+                  </div>
                 </li>
+
+              <% end %>
+          <% end %>
+
+
+      </ul>
+
+    </nav>
+
+    <div class="container" id="container">
+      <%= yield %>
+    </div>
+
+  </body>
+  
+</html>
+
+<!--    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="<%= root_path %>">Powerhouse Fitness Center Chiang Mai</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+           <ul class="navbar-nav ml-auto">
+
+             <% if current_user %>
+              <% if current_user.role=="staff" %>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-cog"></span> Manage
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <% if current_user.staff.position!="Admin" %>
+                      <a class="dropdown-item" href="<%= announcements_path %>" data-turbolinks="false"><%= icon('bullhorn') %> Announcement</a>
+                      <a class="dropdown-item" href="<%= members_path %>" data-turbolinks="false"><%= icon('user-o') %> Member</a>
+                      <a class="dropdown-item" href="<%= packages_path %>" data-turbolinks="false"><%= icon('ravelry') %> Package</a>
+                    <% else %>
+                      <a class="dropdown-item" href="<%= staffs_path %>" data-turbolinks="false"><%= icon('user-circle-o') %> Staff</a>
+                      <a class="dropdown-item" href="<%= branches_path %>" data-turbolinks="false"><%= icon('code-fork') %> Branch</a>
+                    <% end %>
+                  </div>
+                </li>
+
               <% end %>
             <% end %>
 
             <% if user_signed_in? %>
-              <li>
-                <%= link_to(destroy_user_session_path, :method => :delete) do %> 
+              <li class="nav-item">
+                <%= link_to(destroy_user_session_path, :method => :delete, class: "nav-link") do %> 
                   <span class="glyphicon glyphicon-log-out"></span> Logout | 
                   <% if current_user.staff %>
                    <%= current_user.staff.position %>
@@ -87,29 +137,61 @@
                 
               </li>       
             <% else %>
-              <li>
-                <%= link_to(new_user_session_path) do %> 
+              <li class="nav-item">
+                <%= link_to(new_user_session_path, class: "nav-link") do %> 
                   <span class="glyphicon glyphicon-log-in"></span> Login
                 <% end %>
               </li> 
             <% end %>
 
           </ul>
+
+
         </div>
       </div>
-    </nav>
+    </nav> 
 
-    <div class="container">
-       <% unless notice.blank? %>
+      <% unless notice.blank? %>
         <div class="alert alert-success">
           <strong>Success!</strong> <%= notice %> 
         </div>
       <% end %>
 
-      <%= yield %>
+      <div class="row">
+      
+        <% if current_user %>
 
-    </div>
+        <div class="col-lg-3">
+          <h1 class="my-4">Menu</h1>
+          <div class="list-group">
 
-  </body>
-  
-</html>
+
+                <% if current_user.role=="staff" %>
+
+                  <% if current_user.staff %>
+                    <% if current_user.staff.position!="Admin" %>
+                      <a href="<%= serves_path %>" class="list-group-item list-group-item-action" data-turbolinks="false"><%= icon('street-view') %> Serve</a>
+                      <a href="<%= package_occupiedbies_path %>" class="list-group-item list-group-item-action" data-turbolinks="false"><%= icon('heartbeat') %> Trainer Service</a>
+                      <a href="<%= bookings_path %>" class="list-group-item list-group-item-action" data-turbolinks="false"><%= icon('calendar') %> Booking</a>
+                      <a href="<%= receipts_path %>" class="list-group-item list-group-item-action" data-turbolinks="false"><%= icon('credit-card') %> Receipt</a>
+                    <% end %>
+
+                    <a href="<%= report_path %>" class="list-group-item list-group-item-action" data-turbolinks="false"><%= icon('book') %> Report</a>
+
+                  <% end %>
+
+                <% end %>
+
+                <% if current_user.role=="member" %>
+                    <a href="<%= bookings_path %>" class="list-group-item list-group-item-action" data-turbolinks="false"><%= icon('calendar') %> Booking</a>
+                <% end %>
+
+
+
+
+          </div>
+        </div>
+
+        <% end %>
+
+      </div>  -->

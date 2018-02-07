@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bootstrap-sass', '~> 3.3.6'
+#gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap', '~> 4.0.0'
 gem 'bootstrap_form'
 gem "bootstrap-table-rails"
 gem "select2-rails"
@@ -14,10 +15,7 @@ gem 'devise', git: 'https://github.com/plataformatec/devise' #, ref: '88e9a85'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'jquery-validation-rails'
-
-#theme
-gem 'jquery-easing-rails', '~> 0.0.2'
-gem 'bootswatch-rails'
+gem 'jquery-ui-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'

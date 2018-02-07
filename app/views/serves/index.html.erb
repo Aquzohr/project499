@@ -1,3 +1,4 @@
+<a class="d-block p-5 text-center text-white bg-primary b4b full-width">SERVE MENU</a>
 
 <br>
 <h2><span class="glyphicon glyphicon-user"></span> CHECK-IN / CHECK-OUT</h2>
@@ -61,7 +62,7 @@
       <% if s.member %>
         <tr>
           <td><%= i+1 %></td>
-          <td><%= s.member.member_id %></td>
+          <td><%= s.member.member_code %></td>
           <td><%= s.member.user.firstname %> <%= s.member.user.lastname %></td>
           <td><%= s.checkin_time %></td>
           <td><%= link_to 'Checkout', s, method: :patch, data: { confirm: 'Are you sure?' } %></td>

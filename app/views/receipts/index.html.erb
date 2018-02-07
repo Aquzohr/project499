@@ -1,3 +1,5 @@
+<a class="d-block p-5 text-center text-white bg-primary b4b full-width">RECEIPT MENU</a>
+
 
 <h1>Receipts</h1>
 
@@ -24,16 +26,7 @@
     <tbody>
       <% @receipts.each do |receipt| %>
         <tr>
-          <% if receipt.nontrainer_package %>
-            <td><%= receipt.nontrainer_package.price %></td>
-          <% else %>
-            <td>ไม่ได้ระบุ</td>
-          <% end %>
-          <% if receipt.trainer_package %>
-            <td><%= receipt.trainer_package.price %></td>
-          <% else %>
-            <td>ไม่ได้ระบุ</td>
-          <% end %>
+          <td><%= receipt.des %></td>
           <td><%= receipt.date %></td>
           <td><%= link_to 'Print', receipt, class: 'btn btn-primary btn-block' %></td>
           <td><%= link_to 'Edit', edit_receipt_path(receipt), class: 'btn btn-warning btn-block' %></td>

@@ -16,12 +16,32 @@
  *= require bootstrap-table
  *= require select2
  *= require select2-bootstrap
+ *= require jquery-ui
  */
  
-@import "bootstrap-sprockets";
+//@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+.full-width{
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.dropdown-menu-slidebar{
+  color: white !important;
+  background-color: transparent !important;
+  border: 0px !important;
+}
+
+a.dropdown-item {
+    color: white;
+}
 
 tbody > td{
     vertical-align: middle;
@@ -31,15 +51,24 @@ tbody > td{
     width: 100px;
 }
 
+a:hover { 
+    background-color: transparent;
+}
+
+
+
 a.btn.new{
 	color: white;
 	margin-top: 22px;
 }
 
 a.btn{
-	color: white;
+  color: white;
 }
 
+a.text-white{
+	color: white;
+}
 
 .bootstrap-table .table > thead > tr > th {
     border-bottom: 2px solid #ddd !important;
@@ -57,3 +86,4 @@ a.btn{
 .bootstrap-table .table {
     border-bottom: 0px solid #dddddd !important;
 }
+
