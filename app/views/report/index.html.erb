@@ -1,16 +1,24 @@
 <a class="d-block p-5 text-center text-white bg-primary b4b full-width">REPORT MENU</a>
 
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#serve">Serve</a></li>
-  <li><a data-toggle="tab" href="#receipt">Receipt</a></li>
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" href="#serve" role="tab" data-toggle="tab">Serve</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#receipt" role="tab" data-toggle="tab">Receipt</a>
+  </li>
 </ul>
 
+<!-- Tab panes -->
 <div class="tab-content">
-  <div id="serve" class="tab-pane fade in active">
+
+  <div role="tabpanel" class="tab-pane active show" id="serve">
     <%= render 'serve' %>
   </div>
-  <div id="receipt" class="tab-pane fade">
+
+  <div role="tabpanel" class="tab-pane " id="receipt">
     <%= render 'receipt' %>
   </div>
-  </div>
+
 </div>

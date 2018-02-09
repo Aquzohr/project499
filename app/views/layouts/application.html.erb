@@ -18,67 +18,103 @@
     <a class="menu-toggle rounded" href="#" id="menu-toggle">
       <i class="fa fa-bars"></i>
     </a>
+
     <nav id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <li class="sidebar-brand">
-          <a class="js-scroll-trigger" href="<%= root_path %>" data-turbolinks="false">Home</a>
+          <a class="js-scroll-trigger" href="<%= root_path %>" data-turbolinks="false">
+            <i class="icon-home"></i> Home
+          </a>
         </li>
 
-        <% if current_user.role=="staff" %>
-
-          <% if current_user.staff %>
-            <% if current_user.staff.position!="Admin" %>
-
-              <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="<%= serves_path %>" data-turbolinks="false"><%= icon('street-view') %> Serve</a>
-              </li>
-              <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="<%= package_occupiedbies_path %>" data-turbolinks="false"><%= icon('heartbeat') %> Trainer Service</a>
-              </li>
-              <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="<%= bookings_path %>" data-turbolinks="false"><%= icon('calendar') %> Booking</a>
-              </li>
-              <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" href="<%= receipts_path %>" data-turbolinks="false"><%= icon('credit-card') %> Receipt</a>
-              </li>
+        <% if user_signed_in? %>
+          <li class="sidebar-nav-item">
+            <%= link_to(destroy_user_session_path, :method => :delete, class: "js-scroll-trigger" ) do %> 
+              <i class="icon-login"></i> Logout | 
+              <% if current_user.staff %>
+               <%= current_user.staff.position %>
+               <% else %>
+                Member
+              <% end %>
             <% end %>
-
-            <li class="sidebar-nav-item">
-              <a class="js-scroll-trigger" href="<%= report_path %>" data-turbolinks="false"><%= icon('book') %> Report</a>
-            </li>
-
-          <% end %>
-
+            
+          </li>       
+        <% else %>
+          <li class="sidebar-nav-item">
+            <%= link_to(new_user_session_path, class: "js-scroll-trigger", :"data-turbolinks" => false) do %> 
+              <i class="icon-logout"></i> Login
+            <% end %>
+          </li> 
         <% end %>
 
-        <% if current_user.role=="member" %>
-            <li class="sidebar-nav-item">
-              <a class="js-scroll-trigger" href="<%= bookings_path %>" data-turbolinks="false"><%= icon('calendar') %> Booking</a>
-            </li>
-        <% end %>
 
         <% if current_user %>
-              <% if current_user.role=="staff" %>
 
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <%= icon('calendar') %> Manage
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-slidebar" aria-labelledby="navbarDropdownMenuLink">
-                    <% if current_user.staff.position!="Admin" %>
-                      <a class="dropdown-item js-scroll-trigger" href="<%= announcements_path %>" data-turbolinks="false"><%= icon('bullhorn') %> Announcement</a>
-                      <a class="dropdown-item js-scroll-trigger" href="<%= members_path %>" data-turbolinks="false"><%= icon('user-o') %> Member</a>
-                      <a class="dropdown-item js-scroll-trigger" href="<%= packages_path %>" data-turbolinks="false"><%= icon('ravelry') %> Package</a>
-                    <% else %>
-                      <a class="dropdown-item js-scroll-trigger" href="<%= staffs_path %>" data-turbolinks="false"><%= icon('user-circle-o') %> Staff</a>
-                      <a class="dropdown-item js-scroll-trigger" href="<%= branches_path %>" data-turbolinks="false"><%= icon('code-fork') %> Branch</a>
-                    <% end %>
-                  </div>
+          <% if current_user.role=="staff" %>
+
+            <% if current_user.staff %>
+              <% if current_user.staff.position!="Admin" %>
+
+                <li class="sidebar-nav-item">
+                  <a class="js-scroll-trigger" href="<%= serves_path %>" data-turbolinks="false">
+                    <i class="icon-event"></i> Serve</a>
                 </li>
-
+                <li class="sidebar-nav-item">
+                  <a class="js-scroll-trigger" href="<%= package_occupiedbies_path %>" data-turbolinks="false">
+                    <i class="icon-heart"></i> Trainer Service</a>
+                </li>
+                <li class="sidebar-nav-item">
+                  <a class="js-scroll-trigger" href="<%= bookings_path %>" data-turbolinks="false">
+                    <i class="icon-book-open"></i> Booking</a>
+                </li>
+                <li class="sidebar-nav-item">
+                  <a class="js-scroll-trigger" href="<%= receipts_path %>" data-turbolinks="false">
+                    <i class="icon-wallet"></i> Receipt</a>
+                </li>
               <% end %>
+
+              <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="<%= report_path %>" data-turbolinks="false">
+                  <i class="icon-note"></i> Report</a>
+              </li>
+
+            <% end %>
+
           <% end %>
 
+          <% if current_user.role=="member" %>
+              <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="<%= bookings_path %>" data-turbolinks="false">
+                  <i class="icon-book-open"></i> Booking</a>
+              </li>
+          <% end %>
+
+          <% if current_user.role=="staff" %>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="icon-settings"></i> Manage
+              </a>
+              <div class="dropdown-menu dropdown-menu-slidebar" aria-labelledby="navbarDropdownMenuLink">
+                <% if current_user.staff.position!="Admin" %>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= announcements_path %>" data-turbolinks="false"> 
+                    <i class="icon-action-redo"></i> Announcement</a>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= members_path %>" data-turbolinks="false">
+                    <i class="icon-action-redo"></i> Member</a>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= packages_path %>" data-turbolinks="false">
+                    <i class="icon-action-redo"></i> Package</a>
+                <% else %>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= staffs_path %>" data-turbolinks="false">
+                    <i class="icon-action-redo"></i> Staff</a>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= branches_path %>" data-turbolinks="false">
+                    <i class="icon-action-redo"></i> Branch</a>
+                <% end %>
+              </div>
+            </li>
+
+          <% end %>
+
+        <% end #end if current_user %>
 
       </ul>
 
