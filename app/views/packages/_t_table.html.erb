@@ -1,0 +1,19 @@
+<table data-toggle="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% packages.each do |p| %>
+      <tr>
+        <td><%= p.package.name %></td>
+        <td><%= p.package.price %></td>
+        <td><%= p.session %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>

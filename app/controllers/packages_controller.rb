@@ -4,9 +4,8 @@ class PackagesController < ApplicationController
   # GET /packages
   # GET /packages.json
   def index
-
-    @packages = Package.all
-    @package = Package.new
+    @nt_packages = NontrainerPackage.all
+    @t_packages = TrainerPackage.all
 
   end
 
@@ -17,6 +16,7 @@ class PackagesController < ApplicationController
 
   # GET /packages/new
   def new
+    @package = Package.new
   end
 
   # GET /packages/1/edit
@@ -30,7 +30,7 @@ class PackagesController < ApplicationController
 
     respond_to do |format|
       if @package.save
-        format.html { redirect_to @package, notice: 'Package was successfully created.' }
+        format.html { redirect_to packages_path, notice: 'Package was successfully created.' }
         format.json { render :show, status: :created, location: @package }
       else
         format.html { render :new }

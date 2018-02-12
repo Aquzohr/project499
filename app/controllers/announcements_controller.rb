@@ -1,10 +1,28 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, :only => [:index]
+
 
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.all
+
+    @announcements = Announcement.order(created_at: :desc).paginate(page: params[:pageNumber], per_page: params[:pageSize])
+
+    respond_to do |f|
+      if current_user
+        f.html { render 'announcements/index' }
+      else
+        f.html { render 'home/index' }
+      end
+      f.json { 
+        render json: {
+          total: @announcements.total_entries,
+          rows: @announcements.as_json({ index: true })
+        } 
+      }
+    end
+
   end
 
   # GET /announcements/1

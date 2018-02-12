@@ -1,20 +1,23 @@
 <%= bootstrap_form_for(booking) do |form| %>
-  <% if booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
 
-      <ul>
-      <% booking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-6">
+     <%= form.collection_select :member_id, Member.all, :id, :codeAndFullname, prompt: true %>
     </div>
-  <% end %>
+    <div class="col-6">
+      <%= form.collection_select :staff_id, Staff.all, :id, :codeAndFullname, prompt: true %>
+    </div>
+  </div>
 
-  <%= form.collection_select :member_id, Member.select(:id, :member_code), :id, :member_code %>
-  <%= form.collection_select :staff_id, Staff.select(:id, :staff_code), :id, :staff_code %>
-  <%= form.date_select :date %>
-  <%= form.time_field :time %>
-  <%= form.submit %>
+  <div class="row">
+    <div class="col-6">
+      <%= form.date_field :date, min: Date.today %>
+    </div>
+    <div class="col-6">
+      <%= form.time_field :time %>
+    </div>
+  </div>
+
+  <%= form.submit nil, class: "btn btn-info btn-block" %>
 
 <% end %>

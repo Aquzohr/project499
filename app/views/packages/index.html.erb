@@ -1,4 +1,16 @@
 <a class="d-block p-5 text-center text-white bg-primary b4b full-width">MANGE PACKAGES</a>
+<br><br>
+
+<div class="row">
+  <div class="col-md-6">
+    <h1>Package</h1>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to 'New Package', new_package_path, class: 'btn btn-info new', :"data-turbolinks" => false  %>
+  </div>
+</div>
+
+<hr>
 
 
 <ul class="nav nav-tabs" role="tablist">
@@ -14,14 +26,25 @@
 <div class="tab-content">
 
   <div role="tabpanel" class="tab-pane fade active show" id="nt_pk">
+
+    <br>
     <h3>Nontrainer Package</h3>
-    <hr>
-    <%= render 'nt_form', package: @package %>
+    <br>
+
+    <%= render 'nt_table', packages: @nt_packages %>
+
   </div>
 
   <div role="tabpanel" class="tab-pane fade" id="t_pk">
-     <h3>Trainer Package</h3>
-    <%= render 't_form', package: @package %>
+    
+    <br>
+    <h3>Trainer Package</h3>
+    <br>
+
+    <%= render 't_table', packages: @t_packages %>
+
   </div>
 
+
 </div>
+

@@ -25,6 +25,10 @@ class Staff < ApplicationRecord
     joins(:user).where("staff_code LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
   end
 
+  def codeAndFullname
+    "#{self.staff_code}: #{self.user.firstname}  #{self.user.lastname}"
+  end
+
   def edit_link(id)
     "<a href='/staffs/#{id}/edit' class='btn btn-warning btn-block'>Edit</a>"
   end

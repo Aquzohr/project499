@@ -2,10 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.cell-center{
+  text-align: center;
+  align-self: center;
+}
 
 @media print {
-   body > div > div > div > div > div:nth-child(2) > button {
-   	display: none;
-   }
+  body > div > div > div > div > div:nth-child(2) > button {
+   display: none;
+  }
 }

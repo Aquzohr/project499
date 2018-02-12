@@ -1,0 +1,19 @@
+<table data-toggle="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Freeze Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% packages.each do |p| %>
+      <tr>
+        <td><%= p.package.name %></td>
+        <td><%= p.package.price %></td>
+        <td><%= p.freeze_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>

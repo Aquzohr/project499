@@ -7,7 +7,7 @@ end
 
 #gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap', '~> 4.0.0'
-gem 'bootstrap_form'
+gem "bootstrap_form", git: "https://github.com/bootstrap-ruby/bootstrap_form.git", branch: "master"
 gem "bootstrap-table-rails"
 gem "select2-rails"
 gem 'will_paginate', '~> 3.1.0'

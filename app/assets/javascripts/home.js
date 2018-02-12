@@ -1,9 +1,9 @@
 $(function(){
 
 	if($("#home").length != 0) {
-		$("#container").removeClass( "container" )
+		$("#container").removeClass("container");
 	}else{
-		$("#container").addClass( "container" )
+		$("#container").addClass("container");
 	}
 
 });

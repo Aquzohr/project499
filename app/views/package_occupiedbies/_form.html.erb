@@ -1,21 +1,27 @@
 <%= bootstrap_form_for(package_occupiedby) do |f| %>
-  <% if package_occupiedby.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(package_occupiedby.errors.count, "error") %> prohibited this package_occupiedby from being saved:</h2>
 
-      <ul>
-      <% package_occupiedby.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-6">
+      <%= f.collection_select :trainer_package_id, TrainerPackage.all, :id, :name %>
     </div>
-  <% end %>
+    <div class="col-6">
+      <%= f.collection_select :member_id, Member.all, :id, :codeAndFullname %>
+    </div>
+  </div>
 
-    <%= f.date_select :start_date %>
-    <%= f.date_select :end_date %>
-    <%= f.number_field :balance_session %>
-    <%= f.collection_select :trainer_package_id, TrainerPackage.all, :id, :name %>
-    <%= f.collection_select :member_id, Member.select(:id, :member_code), :id, :member_code %>
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-5">
+      <%= f.date_field :start_date, min: Date.today %>
+    </div>
+    <div class="col-5">
+      <%= f.date_field :end_date, min: Date.today %>
+    </div>
+    <div class="col-2">
+      <%= f.number_field :balance_session %>
+    </div>
+  </div>
+
+
+  <%= f.submit nil, class: "btn btn-primary btn-block" %>
 
 <% end %>

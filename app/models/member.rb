@@ -25,9 +25,8 @@ class Member < ApplicationRecord
 	  joins(:user).where("member_code LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
 	end
 
-  def self.fullname(id)
-    member = Member.find(id)
-    "#{member.firstname}  #{member.lastname}"
+  def codeAndFullname
+    "#{self.member_code}: #{self.user.firstname}  #{self.user.lastname}"
   end
 
 	def edit_link(id)

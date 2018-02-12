@@ -1,21 +1,23 @@
 <%= bootstrap_form_for(receipt) do |form| %>
-  <% if receipt.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(receipt.errors.count, "error") %> prohibited this receipt from being saved:</h2>
 
-      <ul>
-      <% receipt.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col">
+      <%= form.collection_select :member_id, Member.all, :id, :codeAndFullname %>
     </div>
-  <% end %>
+    <div class="col">
+      <%= form.date_field :date, min: Date.today %>
+    </div>
+  </div>
 
-  <%= form.text_field :des %>
-  <%= form.collection_select :member_id, Member.select(:id, :member_code), :id, :member_code %>
-  <%= form.date_select :date %>
+  <div class="row">
+    <div class="col-8">
+      <%= form.text_field :des, label: 'Description' %>
+    </div>
+    <div class="col-4 cell-center">
+      <%= form.submit nil, class: "btn btn-block" %>
+    </div>
+  </div>
+
   <%= form.hidden_field :staff_id, value: current_user.staff.id %>
 
-  <%= form.submit %>
-  </div>
 <% end %>

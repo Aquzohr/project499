@@ -4,6 +4,8 @@ class TrainerPackage < ApplicationRecord
 	
 	belongs_to :package, optional: true, dependent: :destroy
 
+  validates :session, numericality: { other_than: 0 }
+
 	def name
 		if self.package.name
 			self.package.name

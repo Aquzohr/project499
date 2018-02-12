@@ -1,24 +1,12 @@
 
-  <% if package.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(package.errors.count, "error") %> prohibited this package from being saved:</h2>
 
-      <ul>
-      <% package.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-<%= bootstrap_form_for(package) do |form| %>
+<%= bootstrap_form_for(package, :html=> {:id => 'new_nt_package'}) do |form| %>
 
     <%= form.text_field :name %>
     <%= form.text_field :price %>
     
-    <%= form.fields_for :nontrainer_package, NontrainerPackage.new  do |f| %>
-      <%= f.text_field :freeze_time %>
+    <%= form.fields_for :nontrainer_package, NontrainerPackage.new do |f| %>
+      <%= f.number_field :freeze_time %>
     <% end %>
     
     <%= form.submit %>

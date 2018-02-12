@@ -1,5 +1,37 @@
+<a class="d-block p-5 text-center text-white bg-primary b4b full-width">NEW PACKAGE</a>
+<br><br>
+
 <h1>New Package</h1>
+<hr>
 
-<%= render 'form', package: @package %>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" href="#nt_pk" role="tab" data-toggle="tab">Nontrainer Package</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#t_pk" role="tab" data-toggle="tab">Trainer Package</a>
+  </li>
+</ul>
 
-<%= link_to 'Back', packages_path %>
+<!-- Tab panes -->
+<div class="tab-content">
+
+  <div role="tabpanel" class="tab-pane fade active show" id="nt_pk">
+
+    <br>
+    <h3>Nontrainer Package</h3>
+    <br>
+
+    <%= render 'nt_form', package: @package %>
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="t_pk">
+
+    <br>
+    <h3>Trainer Package</h3>
+    <br>
+    
+    <%= render 't_form', package: @package %>
+  </div>
+
+</div>

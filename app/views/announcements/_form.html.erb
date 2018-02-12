@@ -1,8 +1,22 @@
 <%= bootstrap_form_for(announcement) do |form| %>
 
-    <%= form.text_field :title, id: :announcement_title %>
-    <%= form.text_area :des, id: :announcement_des %>
-    <%= form.date_select :date, id: :announcement_date %>
-    <%= form.submit %>
+    <div class="row">
+      <div class="col-6">
+        <%= form.text_field :title%>
+      </div>
+      <div class="col-6">
+        <%= form.date_field :date, min: Date.today %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <%= form.text_area :des %>
+      </div>
+      <div class="col-4 cell-center">
+        <%= form.submit nil, class: "btn btn-info btn-block" %>
+      </div>
+    </div>
+
 
 <% end %>

@@ -16,6 +16,7 @@ class ReceiptsController < ApplicationController
 
   # GET /receipts/new
   def new
+    @receipt = Receipt.new
   end
 
   # GET /receipts/1/edit
@@ -70,6 +71,6 @@ class ReceiptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
-      params.require(:receipt).permit(:nontrainer_package_id, :trainer_package_id, :date, :staff_id)
+      params.require(:receipt).permit(:des, :date, :staff_id)
     end
 end
