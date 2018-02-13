@@ -4,6 +4,7 @@
       <th>Name</th>
       <th>Price</th>
       <th>Freeze Time</th>
+      <th data-width="100px"></th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
         <td><%= p.package.name %></td>
         <td><%= p.package.price %></td>
         <td><%= p.freeze_time %></td>
+        <td><%= link_to 'Edit', edit_nontrainer_package_path(p), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
       </tr>
     <% end %>
   </tbody>

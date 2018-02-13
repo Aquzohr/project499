@@ -10,15 +10,14 @@ class Staff < ApplicationRecord
   has_many :receipts
   has_many :members, through: :receipts
 
-  belongs_to :branch, optional: true, dependent: :destroy
+  belongs_to :branch
 
-  belongs_to :user, optional: true, dependent: :destroy
+  belongs_to :user
   accepts_nested_attributes_for :user
   validates_associated :user
 
   validates :staff_code, presence: true, uniqueness: true
   
-
   def self.search(search)
     wildcard_search = "%#{search}%"
 
@@ -30,11 +29,15 @@ class Staff < ApplicationRecord
   end
 
   def edit_link(id)
-    "<a href='/staffs/#{id}/edit' class='btn btn-warning btn-block'>Edit</a>"
+    "<a href='/staffs/#{id}/edit' class='btn btn-warning btn-block' data-turbolinks='false'>Edit</a>"
   end
 
-  def remove_link(id)
-    "<a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='/staffs/#{id}' class='btn btn-danger btn-block'>Destroy</a>"
+  def show_status
+    if self.status == 1
+      "Working"
+    else
+      "Retire"
+    end
   end
 
   def as_json(options={})
@@ -46,8 +49,8 @@ class Staff < ApplicationRecord
         phone: self.user.phone,
         position: self.position,
         branch: self.branch.name,
+        status: self.show_status,
         edit: edit_link(self.id),
-        remove: remove_link(self.id),
       }
     else
       super()

@@ -1,31 +1,54 @@
 <%= bootstrap_form_for(staff) do |form| %>
-  <% if staff.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
 
-      <ul>
-      <% staff.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+    <div class="row">
+      <div class="col">
+        <%= form.collection_select :branch_id, Branch.all, :id, :name %>
+      </div>
+      <div class="col">
+        <%= form.text_field :staff_code %>
+      </div>
+      <div class="col">
+        <%= form.select :status, [["Working", 1], ["Retire", 0]] %>
+      </div>
+      <div class="col">
+        <%= form.select :position, [["Genaral", "Genaral"], ["Trainer", "Trainer"],["Admin", "Admin"] ] %>
+      </div>
     </div>
-  <% end %>
 
     <%= form.fields_for :user do |f| %>
-      <%= f.email_field :email %>
-      <%= f.password_field :password %>
-      <%= f.password_field :password_confirmation %>
-      <%= f.text_field :firstname %>
-      <%= f.text_field :lastname %>
-      <%= f.text_field :phone %>
+
+    <div class="row">
+      <div class="col">
+        <%= f.text_field :firstname %>
+      </div>
+      <div class="col">
+        <%= f.text_field :lastname %>
+      </div>
+      <div class="col">
+       <%= f.text_field :phone %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <%= f.email_field :email %>
+      </div>
+      <div class="col">
+       <%= f.password_field :password %>
+      </div>
+      <div class="col">
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+
+
+      
       <%= f.hidden_field :role, value: 'staff' %>
     <% end %>
 
-    <%= form.text_field :position %>
-    <%= form.text_field :staff_code %>
 
-    <%= form.collection_select :branch_id, Branch.all, :id, :name %>
 
-    <%= form.submit %>
+    <%= form.submit nil, class: "btn btn-info btn-block" %>
   </div>
 <% end %>

@@ -5,10 +5,10 @@
 
 <div class="row">
   <div class="col col-md-6">
-    <h1>Package Occupiedbies</h1>
+    <h1>List Member for Trainer Service</h1>
   </div>
   <div class="col col-md-6 text-right">
-    <%= link_to 'New Package Occupiedby', new_package_occupiedby_path, class: 'btn btn-info new', :"data-turbolinks" => false  %>
+    <%= link_to 'New Trainer Service', new_package_occupiedby_path, class: 'btn btn-info new', :"data-turbolinks" => false  %>
   </div>
 </div>
 
@@ -19,11 +19,11 @@
         >
   <thead>
     <tr>
+      <th>Member</th>
+      <th>Package</th>
+      <th>Balance session</th>
       <th>Start date</th>
       <th>End date</th>
-      <th>Balance session</th>
-      <th>Trainer package</th>
-      <th>Member</th>
       <th data-width="100px"></th>
       <th data-width="100px"></th>
     </tr>
@@ -32,11 +32,11 @@
   <tbody>
     <% @package_occupiedbies.each do |package_occupiedby| %>
       <tr>
+        <td><%= package_occupiedby.member.member_code %></td>
+        <td><%= package_occupiedby.trainer_package.name %></td>
+        <td><%= package_occupiedby.balance_session %></td>
         <td><%= package_occupiedby.start_date %></td>
         <td><%= package_occupiedby.end_date %></td>
-        <td><%= package_occupiedby.balance_session %></td>
-        <td><%= package_occupiedby.trainer_package.name %></td>
-        <td><%= package_occupiedby.member.member_code %></td>
         <td><%= link_to 'Edit', edit_package_occupiedby_path(package_occupiedby), class: 'btn btn-warning btn-block' %></td>
         <td><%= link_to 'Destroy', package_occupiedby, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>

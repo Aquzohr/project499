@@ -23,8 +23,8 @@
         >
   <thead>
     <tr>
-      <th>Package Name</th>
       <th>Date</th>
+      <th>Description</th>
       <th>Price</th>
     </tr>
   </thead>
@@ -33,21 +33,12 @@
   
  		<% if @receipts %>
 	    <% @receipts.each do |r|%>
-		    <% if r.nontrainer_package %>
-		      <tr>
-		        <td><%= r.nontrainer_package.name %></td>
-		        <td><%= r.date %></td>
-		        <td><%= r.nontrainer_package.price %></td>
-		      </tr>
-		    <% end %>
 
-		    <% if r.trainer_package %>
-		      <tr>
-		        <td><%= r.trainer_package.name %></td>
-		        <td><%= r.date %></td>
-		        <td><%= r.trainer_package.price %></td>
-		      </tr>
-		    <% end %>
+        <tr>
+          <td><%= r.date %></td>
+          <td><%= r.des %></td>
+          <td><%= r.price %></td>
+        </tr>
 
 	    <% end %>
     <% end %>

@@ -6,7 +6,7 @@
     <h1>Announcements</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to 'New Announcement', new_announcement_path, class: 'btn btn-info new' %>
+    <%= link_to 'New Announcement', new_announcement_path, class: 'btn btn-info new', :"data-turbolinks" => false %>
   </div>
 </div>
 
@@ -20,8 +20,8 @@
       <th>Title</th>
       <th>Des</th>
       <th>Date</th>
-      <th></th>
-      <th></th>
+      <th data-width="100px"></th>
+      <th data-width="100px"></th>
     </tr>
   </thead>
 
@@ -30,8 +30,8 @@
       <tr>
         <td><%= announcement.title %></td>
         <td><%= announcement.des %></td>
-        <td class="td-date"><%= announcement.date %></td>
-        <td><%= link_to 'Edit', edit_announcement_path(announcement), class: 'btn btn-warning btn-block' %></td>
+        <td><%= announcement.date %></td>
+        <td><%= link_to 'Edit', edit_announcement_path(announcement), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
         <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
     <% end %>

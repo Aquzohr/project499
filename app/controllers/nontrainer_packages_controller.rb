@@ -42,7 +42,7 @@ class NontrainerPackagesController < ApplicationController
   def update
     respond_to do |format|
       if @nontrainer_package.update(nontrainer_package_params)
-        format.html { redirect_to package_path, notice: 'Nontrainer package was successfully updated.' }
+        format.html { redirect_to packages_path, notice: 'Nontrainer package was successfully updated.' }
         format.json { render :show, status: :ok, location: @nontrainer_package }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class NontrainerPackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nontrainer_package_params
-      params.require(:nontrainer_package).permit(:name, :price, :freeze_time)
+      params.require(:nontrainer_package).permit(:freeze_time, package_attributes: [:name, :price])
     end
 end

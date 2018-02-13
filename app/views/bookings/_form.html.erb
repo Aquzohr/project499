@@ -5,16 +5,16 @@
      <%= form.collection_select :member_id, Member.all, :id, :codeAndFullname, prompt: true %>
     </div>
     <div class="col-6">
-      <%= form.collection_select :staff_id, Staff.all, :id, :codeAndFullname, prompt: true %>
+      <%= form.collection_select :staff_id, Staff.where(position: "Trainer"), :id, :codeAndFullname, prompt: true %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-6">
-      <%= form.date_field :date, min: Date.today %>
+    <div class="col">
+      <%= form.datetime_field :start_datetime, min: Date.today %>
     </div>
-    <div class="col-6">
-      <%= form.time_field :time %>
+    <div class="col">
+      <%= form.datetime_field :end_datetime, min: Date.today %>
     </div>
   </div>
 

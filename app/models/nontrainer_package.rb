@@ -1,7 +1,9 @@
 class NontrainerPackage < ApplicationRecord
   has_many :members
 
-  belongs_to :package, optional: true, dependent: :destroy
+  belongs_to :package
+  accepts_nested_attributes_for :package
+  validates_associated :package
 
   validates :freeze_time, numericality: { other_than: 0 }
 

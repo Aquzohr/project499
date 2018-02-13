@@ -1,11 +1,12 @@
-<a class="d-block p-5 text-center text-white bg-primary b4b full-width">MANGE STAFFS</a>
+<a class="d-block p-5 text-center text-white bg-danger b4b full-width">MANGE STAFFS</a>
+<br><br>
 
 <div class="row">
   <div class="col-md-6">
     <h1>Staffs</h1>
   </div>
   <div class="col-md-6 text-right">
-    <%= link_to 'New Staff', new_staff_path,class: 'btn btn-info new' %>
+    <%= link_to 'New Staff', new_staff_path,class: 'btn btn-info new', :"data-turbolinks" => false %>
   </div>
 </div>
 
@@ -19,13 +20,13 @@
        data-url="staffs.json">
   <thead>
     <tr>
-      <th data-field="staff_id" data-sortable="true">Staff ID</th>
+      <th data-field="staff_code" data-sortable="true">Staff Code</th>
       <th data-field="fullname" >Fullname</th>
       <th data-field="phone" >Phone</th>
       <th data-field="position" >Position</th>
       <th data-field="branch" >Branch</th>
+      <th data-field="status" >Status</th>
       <th data-field="edit"></th>
-      <th data-field="remove"></th>
     </tr>
   </thead>
 </table>

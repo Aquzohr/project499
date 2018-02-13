@@ -42,7 +42,7 @@ class TrainerPackagesController < ApplicationController
   def update
     respond_to do |format|
       if @trainer_package.update(trainer_package_params)
-        format.html { redirect_to package_path, notice: 'Trainer package was successfully updated.' }
+        format.html { redirect_to packages_path, notice: 'Trainer package was successfully updated.' }
         format.json { render :show, status: :ok, location: @trainer_package }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class TrainerPackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trainer_package_params
-      params.require(:trainer_package).permit(:name, :price, :session)
+      params.require(:trainer_package).permit(:session, package_attributes: [:name, :price])
     end
 end

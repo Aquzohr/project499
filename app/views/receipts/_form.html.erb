@@ -2,7 +2,13 @@
 
   <div class="row">
     <div class="col">
-      <%= form.collection_select :member_id, Member.all, :id, :codeAndFullname %>
+      <%= form.text_field :customer_name %>
+    </div>
+    <div class="col">
+      <%= form.text_field :payment_method %>
+    </div>
+    <div class="col">
+      <%= form.number_field :price %>
     </div>
     <div class="col">
       <%= form.date_field :date, min: Date.today %>

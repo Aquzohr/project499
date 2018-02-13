@@ -4,7 +4,7 @@ class BranchesController < ApplicationController
   # GET /branches
   # GET /branches.json
   def index
-    @branches = Branch.all
+    @branches = Branch.order("created_at desc")
   end
 
   # GET /branches/1
@@ -56,7 +56,7 @@ class BranchesController < ApplicationController
   def destroy
     @branch.destroy
     respond_to do |format|
-      format.html { redirect_to branches_url, notice: 'Branch was successfully destroyed.' }
+      format.html { redirect_to branches_path, notice: 'Branch was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

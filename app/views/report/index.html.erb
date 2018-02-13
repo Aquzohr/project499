@@ -1,4 +1,9 @@
-<a class="d-block p-5 text-center text-white bg-primary b4b full-width">REPORT MENU</a>
+<% if current_user.staff.position == "Admin" %>
+  <a class="d-block p-5 text-center text-white bg-danger b4b full-width">REPORT MENU</a>
+<% else %>
+  <a class="d-block p-5 text-center text-white bg-primary b4b full-width">REPORT MENU</a>
+<% end %>
+
 <br><br>
 
 <ul class="nav nav-tabs" role="tablist">

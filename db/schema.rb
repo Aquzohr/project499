@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date     "date"
-    t.string   "time"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
     t.integer  "staff_id"
     t.integer  "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["member_id"], name: "index_bookings_on_member_id", using: :btree
     t.index ["staff_id"], name: "index_bookings_on_staff_id", using: :btree
   end
@@ -84,13 +84,14 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   end
 
   create_table "receipts", force: :cascade do |t|
+    t.string   "customer_name"
+    t.string   "payment_method"
     t.string   "des"
+    t.integer  "price",          default: 0, null: false
     t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "staff_id"
-    t.integer  "member_id"
-    t.index ["member_id"], name: "index_receipts_on_member_id", using: :btree
     t.index ["staff_id"], name: "index_receipts_on_staff_id", using: :btree
   end
 
@@ -155,7 +156,6 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   add_foreign_key "nontrainer_packages", "packages"
   add_foreign_key "package_occupiedbies", "members"
   add_foreign_key "package_occupiedbies", "trainer_packages"
-  add_foreign_key "receipts", "members"
   add_foreign_key "receipts", "staffs"
   add_foreign_key "serves", "members"
   add_foreign_key "serves", "staffs"

@@ -4,7 +4,7 @@
 
   <div class="row">
     <div class="col-8">
-      <%= f.collection_select :member_id, Member.select(:id, :member_code), :id, :member_code, prompt: true %>
+      <%= f.collection_select :member_id, Member.all, :id, :codeAndFullname, prompt: true %>
     </div>
     <div class="col-4 cell-center">
       <%= f.submit "View Serve Report", class: "btn btn-block" %>

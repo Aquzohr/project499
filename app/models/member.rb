@@ -13,7 +13,7 @@ class Member < ApplicationRecord
 
   belongs_to :nontrainer_package
 
-	belongs_to :user, optional: true, dependent: :destroy
+	belongs_to :user
 	accepts_nested_attributes_for :user
 	validates_associated :user
 
@@ -30,11 +30,7 @@ class Member < ApplicationRecord
   end
 
 	def edit_link(id)
-	  "<a href='/members/#{id}/edit' class='btn btn-warning btn-block'>Edit</a>"
-	end
-
-	def remove_link(id)
-	  "<a data-confirm='Are you sure?' rel='nofollow' data-method='delete' href='/members/#{id}' class='btn btn-danger btn-block'>Destroy</a>"
+	  "<a href='/members/#{id}/edit' class='btn btn-warning btn-block' data-turbolinks='false'>Edit</a>"
 	end
 
   def as_json(options={})
@@ -49,7 +45,6 @@ class Member < ApplicationRecord
         end_date: self.end_date,
         freeze_count: self.freeze_count,
         edit: edit_link(self.id),
-        remove: remove_link(self.id),
       }
     else
       super()
