@@ -36,7 +36,7 @@
         <td><%= receipt.customer_name %></td>
         <td><%= receipt.payment_method %></td>
         <td><%= receipt.des %></td>
-        <td><%= receipt.price %></td>
+        <td><%= number_to_currency(receipt.price, unit: "฿") %></td>
         <td><%= receipt.date %></td>
         <td><%= link_to 'Print', receipt, class: 'btn btn-primary btn-block', :"data-turbolinks" => false %></td>
         <td><%= link_to 'Edit', edit_receipt_path(receipt), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>

@@ -4,8 +4,7 @@ class ReceiptsController < ApplicationController
   # GET /receipts
   # GET /receipts.json
   def index
-    @receipts = Receipt.all
-    @receipt = Receipt.new
+    @receipts = Receipt.order("created_at desc")
     
   end
 

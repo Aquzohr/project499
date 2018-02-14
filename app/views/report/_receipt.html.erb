@@ -18,6 +18,16 @@
 
 <hr>
 
+
+<% if @receipts != nil and @receiptReport == 1 %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Message: </strong> ไม่พบข้อมูลในช่วงเวลาดังกล่าว
+  </div>
+<% end %>
+
 <table  data-toggle="table"
         data-pagination="true"
         >
@@ -30,6 +40,7 @@
   </thead>
 
   <tbody>
+    <% total = 0 %>
   
  		<% if @receipts %>
 	    <% @receipts.each do |r|%>
@@ -37,10 +48,19 @@
         <tr>
           <td><%= r.date %></td>
           <td><%= r.des %></td>
-          <td><%= r.price %></td>
+          <td><%= number_to_currency(r.price, unit: "฿") %></td>
         </tr>
-
+        
+      <% total = total + r.price.to_f %>
 	    <% end %>
+    <% end %>
+
+    <% if total != 0 %>
+      <tr>
+        <td></td>
+        <td><h5>Total: </h5></td>
+        <td><h5><%= number_to_currency(total, unit: "฿") %></h5></td>
+      </tr>
     <% end %>
 
   </tbody>

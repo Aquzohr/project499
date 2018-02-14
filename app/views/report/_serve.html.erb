@@ -27,6 +27,15 @@
   </thead>
 
   <tbody>
+    
+    <% if @serves != nil and @serveReport == 1 %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Message: </strong> ไม่พบข้อมูลของสมาชิก
+      </div>
+    <% end %>
   
  		<% if @serves %>
 	    <% @serves.each do |serve|%>

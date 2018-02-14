@@ -8,8 +8,11 @@
 }
 
 @media print {
-  body > div > div > div > div > div:nth-child(2) > button {
+  #container > div > div > div:nth-child(9) > div > button {
    display: none;
+  }
+  #menu-toggle{
+    display: none;
   }
 }
 

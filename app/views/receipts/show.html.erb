@@ -12,15 +12,15 @@
 
     <div class="row">
       <div class="col-6">
-        <p>No: 69, Room: A5-A6,B6-B8 Chonlaprathan Rd, Tambon Su Thep, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50200</p>
-        <p>Tel: 081 764 8701</p>
+        <p><h6> <strong><i class='icon-location-pin'></i></strong> No: 69, Room: A5-A6,B6-B8 Chonlaprathan Rd, Tambon Su Thep, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50200</h6></p>
+        <p><h6> <strong><i class='icon-phone'></i></strong> 081 764 8701</h6></p>
       </div>
       <div class="col-6 text-right">
-        <p>Recipt #<%= @receipt.id %></p>
-        <p>Customer Name: <%= @receipt.customer_name %></p>
-        <p>Payment Method: <%= @receipt.payment_method %></p>
-        <p>Recipt by: <%= @receipt.staff.user.firstname %></p>
-        <p>Date: <%= @receipt.date %></p>
+        <p><h6>Recipt #<%= @receipt.id %></h6></p>
+        <p><h6>Customer Name: <%= @receipt.customer_name %></h6></p>
+        <p><h6>Payment Method: <%= @receipt.payment_method %></h6></p>
+        <p><h6>Recipt by: <%= @receipt.staff.user.firstname %></h6></p>
+        <p><h6>Date: <%= @receipt.date %></h6></p>
 
       </div>
     </div>
@@ -37,7 +37,7 @@
     <br><br>
 
     <div class="row">
-      <table class="table">
+      <table class="table table-bordered">
           <thead>
             <tr>
               <th>Description</th>
@@ -46,12 +46,53 @@
           </thead>
           <tbody>
             <tr>
-              <td><%= @receipt.des %></td>
-              <td><%= number_to_currency(@receipt.price, unit: "฿") %></td>
+              <td><h5><%= @receipt.des %></h5></td>
+              <td><h5><%= number_to_currency(@receipt.price, unit: "฿") %></h5></td>
             </tr>
           </tbody>
       </table>
     </div>
+
+    <div class="card card-default">
+      <div class="card-header">
+        Summary of Charges
+      </div>
+      <div class="card-block">
+        <div class="row">
+          <div class="col-6">
+            <h7><%= @receipt.des %></h7>
+          </div>
+          <div class="col-6 text-right">
+            <h7><%= number_to_currency(@receipt.price, unit: "฿") %></h7>
+          </div>
+          <div class="col-6">
+            <h7>Current Charge Before VAT</h7>
+          </div>
+          <div class="col-6 text-right">
+            <h7><%= number_to_currency(@receipt.price, unit: "฿") %></h7>
+          </div>
+          <div class="col-6">
+            <h7>VAT 7%</h7>
+          </div>
+          <div class="col-6 text-right">
+            <h7><%= number_to_currency(@receipt.price.to_i*0.07, unit: "฿") %></h7>
+          </div>
+          <div class="col-6">
+            <h7>Total Current Charges</h7>
+          </div>
+          <div class="col-6 text-right">
+            <h7><%= number_to_currency(@receipt.price.to_i*1.07, unit: "฿") %></h7>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col text-center">
+       <button type="button" class="btn btn-success" onclick="printReceipt()">Confirm</button>
+      </div>
+    </div>
+
 
   </div>
 </div>
