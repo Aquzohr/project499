@@ -2,6 +2,8 @@
 
 This is Project for 499 at CS CMU
 
+Demo: http://powerhousegym.herokuapp.com/
+
 ## Getting Started
 
 My project build with Ruby on Rails Version 5.0+
