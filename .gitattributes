@@ -1,0 +1,4 @@
+*.rb linguist-language=Ruby
+public/* linguist-vendored
+app/assets/javascripts/html2canvas.js/* linguist-vendored
+jquery.js linguist-vendored=false

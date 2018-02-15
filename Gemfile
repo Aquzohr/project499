@@ -18,6 +18,7 @@ gem 'jquery-validation-rails'
 gem 'jquery-ui-rails'
 gem 'simple-line-icons-rails'
 gem 'validates_overlap'
+gem 'github-linguist'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
