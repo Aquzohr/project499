@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
 
-  resources :packages
   get 'report', to: 'report#index'
   post 'report', to: 'report#index'
 
+  resources :packages
   scope '/package' do
     resources :nontrainer_packages
     resources :trainer_packages
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post 'serves/checkout_all'
 
   resources :bookings
+  post 'bookings/confirm'
+
   resources :staffs
   resources :members
   resources :announcements

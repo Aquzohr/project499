@@ -32,6 +32,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+    @freeze_time = Member.find(params[:id]).nontrainer_package.freeze_time.to_i
   end
 
   # POST /members

@@ -6,14 +6,23 @@ class BookingsController < ApplicationController
   def index
 
     if current_user.role=="staff"
-      @bookings = Booking.all
+      @bookings = Booking.order(created_at: :desc)
     end
 
     if current_user.role=="member"
-      @bookings = Booking.where(member_id: current_user.member.id)
+      @bookings = Booking.where(member_id: current_user.member.id).order(created_at: :desc)
+      @balance_session = PackageOccupiedby.where(member_id: current_user.member.id).last.balance_session
     end
 
   end
+  
+  def confirm
+    PackageOccupiedby.where(member_id: params[:member_id]).last.decrement!(:balance_session, 1)
+    Booking.find(params[:id]).update(status: 0)
+
+    redirect_to bookings_path
+  end
+
 
   # GET /bookings/1
   # GET /bookings/1.json

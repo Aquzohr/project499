@@ -28,10 +28,11 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_datetime"
     t.datetime "end_datetime"
+    t.integer  "status",         default: 1, null: false
     t.integer  "staff_id"
     t.integer  "member_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["member_id"], name: "index_bookings_on_member_id", using: :btree
     t.index ["staff_id"], name: "index_bookings_on_staff_id", using: :btree
   end

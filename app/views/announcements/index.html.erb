@@ -32,7 +32,7 @@
         <td><%= announcement.des %></td>
         <td><%= announcement.date %></td>
         <td><%= link_to 'Edit', edit_announcement_path(announcement), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
-        <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
+        <td><%= link_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
     <% end %>
   </tbody>

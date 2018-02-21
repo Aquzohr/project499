@@ -29,6 +29,10 @@ class Member < ApplicationRecord
     "#{self.member_code}: #{self.user.firstname}  #{self.user.lastname}"
   end
 
+  def self.haveTrainer
+    Member.joins(:package_occupiedby)
+  end
+
 	def edit_link(id)
 	  "<a href='/members/#{id}/edit' class='btn btn-warning btn-block' data-turbolinks='false'>Edit</a>"
 	end

@@ -24,13 +24,17 @@ NontrainerPackage.create(freeze_time: rand(0..50), package_id: 1)
 #create Trainer Package
 TrainerPackage.create(session: rand(0..50), package_id: 2)
 
-#Admin
+#Admin 
 User.create(email: 'admin@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
 Staff.create(position: 'Admin', staff_code: 's001', user_id: 1, branch_id: 1)
 
-#Staff
+#Genaral Staff
 User.create(email: 'staff@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
 Staff.create(position: 'Staff', staff_code: 's002', user_id: 2, branch_id: 1)
+
+#Trainer
+User.create(email: 'trainer@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
+Staff.create(position: 'Trainer', staff_code: 's003', user_id: 3, branch_id: 1)
 
 #Member
 User.create(email: 'member@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'member')

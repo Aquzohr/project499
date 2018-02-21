@@ -27,6 +27,27 @@
           </a>
         </li>
 
+        <% if user_signed_in? %>
+          <li class="sidebar-nav-item">
+            <a class="js-scroll-trigger" href="#" data-turbolinks="false">
+              <i class="icon-user"></i> Welcome, <%= current_user.firstname %> <%= current_user.lastname %>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <%= link_to(destroy_user_session_path, :method => :delete, class: "js-scroll-trigger" ) do %> 
+              <i class="icon-login"></i> Logout
+            <% end %>
+          </li>       
+        <% else %>
+          <li class="sidebar-nav-item">
+            <%= link_to(new_user_session_path, class: "js-scroll-trigger", :"data-turbolinks" => false) do %> 
+              <i class="icon-logout"></i> Login
+            <% end %>
+          </li> 
+        <% end %>
+
+        <hr>
+
         <% if current_user %>
 
           <% if current_user.role=="staff" %>
@@ -96,21 +117,6 @@
           <% end %>
 
         <% end #end if current_user %>
-
-        <% if user_signed_in? %>
-          <li class="sidebar-nav-item fixed-bottom">
-            <%= link_to(destroy_user_session_path, :method => :delete, class: "js-scroll-trigger" ) do %> 
-              <i class="icon-login"></i> Logout | <%= current_user.firstname %> <%= current_user.lastname %>
-            <% end %>
-            
-          </li>       
-        <% else %>
-          <li class="sidebar-nav-item fixed-bottom">
-            <%= link_to(new_user_session_path, class: "js-scroll-trigger", :"data-turbolinks" => false) do %> 
-              <i class="icon-logout"></i> Login
-            <% end %>
-          </li> 
-        <% end %>
 
       </ul>
 
