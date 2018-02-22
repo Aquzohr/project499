@@ -37,7 +37,7 @@ Staff.create(position: 'Trainer', staff_code: 's003', user_id: 3, branch_id: 1)
 
 #Member
 User.create(email: 'member@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'member')
-Member.create(member_code: 'm001', start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: 3, nontrainer_package_id: 1)
+Member.create(member_code: 'm001', start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: 4, nontrainer_package_id: 1)
 
 #create Announcement
 1.upto(30) do |i|
