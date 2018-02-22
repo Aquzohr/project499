@@ -14,14 +14,13 @@ require 'faker'
 end
 
 #create Package
-1.upto(2) do |i|
-	Package.create(name: Faker::Commerce.color,price: (Faker::Commerce.price).to_i * 1000)
-end
 
 #create Nontrainer Packages
+Package.create(name: "Annule",price: (Faker::Commerce.price).to_i * 1000)
 NontrainerPackage.create(freeze_time: rand(0..50), package_id: 1)
 
 #create Trainer Package
+Package.create(name: "Personal Trainer",price: (Faker::Commerce.price).to_i * 1000)
 TrainerPackage.create(session: rand(0..50), package_id: 2)
 
 #Admin 
@@ -40,6 +39,10 @@ Staff.create(position: 'Trainer', staff_code: 's003', user_id: 3, branch_id: 1)
 User.create(email: 'member@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'member')
 Member.create(member_code: 'm001', start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: 3, nontrainer_package_id: 1)
 
+#create Announcement
+1.upto(30) do |i|
+  Announcement.create(title: Faker::VentureBros.organization, des: Faker::VentureBros.quote, date: Faker::Date.forward(10))
+end
 
 # #create USER
 # 1.upto(30) do |i|
@@ -65,11 +68,6 @@ Member.create(member_code: 'm001', start_date: Faker::Date.backward(14), end_dat
 # #create Member
 # 1.upto(30) do |i|
 # 	PackageOccupiedby.create(start_date: Faker::Date.backward(14),end_date: Faker::Date.forward(23),balance_session: 0, trainer_package_id: rand(1..30), member_id: rand(1..30))
-# end
-
-# #create Announcement
-# 1.upto(30) do |i|
-# 	Announcement.create(title: Faker::VentureBros.organization, des: Faker::VentureBros.quote, date: Faker::Date.forward(10))
 # end
 
 
