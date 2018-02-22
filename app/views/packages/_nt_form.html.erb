@@ -2,14 +2,32 @@
 
 <%= bootstrap_form_for(package, :html=> {:id => 'new_nt_package'}) do |form| %>
 
-    <%= form.text_field :name %>
-    <%= form.text_field :price %>
+  <div class="row">
+
+    <div class="col">
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="col">
+      <%= form.text_field :price %>
+    </div>
     
     <%= form.fields_for :nontrainer_package, NontrainerPackage.new do |f| %>
-      <%= f.number_field :freeze_time %>
+      <div class="col">
+        <%= f.number_field :freeze_time %>
+      </div>
     <% end %>
-    
-    <%= form.submit %>
+
+  </div>
+
+
+  <br>
+
+  <div class="row">
+    <div class="col text-center">
+      <%= form.submit %>
+    </div>
+  </div>
 
 <% end %>
 

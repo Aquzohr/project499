@@ -8,7 +8,12 @@ class ServesController < ApplicationController
     @serve = Serve.new
     @serves = Serve.where(checkout_time: nil).order(checkin_time: :desc)
 
-    @lastCheckin = Serve.where(checkout_time: nil).last
+
+    if params[:member_id]
+      @memberFreeze = Member.find(params[:member_id])
+    else
+      @lastCheckin = Serve.where(checkout_time: nil).last
+    end
 
   end
 
@@ -32,12 +37,12 @@ class ServesController < ApplicationController
     @serf = Serve.new(serf_params)
 
     respond_to do |format|
-      if @serf.save
+      if @serf.member.freeze_count != 0
+        format.html { redirect_to serves_path(member_id: @serf.member.id) }
+      elsif @serf.save
         format.html { redirect_to serves_path, notice: 'Serve was successfully created.' }
-        format.json { render :show, status: :created, location: @serf }
       else
         format.html { redirect_to serves_path }
-        format.json { render json: @serf.errors, status: :unprocessable_entity }
       end
     end
   end

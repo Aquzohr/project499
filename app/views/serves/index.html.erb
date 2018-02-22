@@ -25,6 +25,22 @@
 <hr>
 <br>
 
+<% if @memberFreeze %>
+  <% if @memberFreeze.freeze_count != 0 %>
+
+    <% @updateEnd_date = @memberFreeze.end_date + @memberFreeze.freeze_count.months %>
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      This member has Freeze <%= @memberFreeze.freeze_count %> months <br>
+      End Date : <%= @memberFreeze.end_date.strftime("%d/%m/%Y") %> <br>
+      New End Date : <%= @updateEnd_date.strftime("%d/%m/%Y") %>
+    </div>
+  <% end %>
+<% end %>
+
 <% if @lastCheckin %>
 
   <% if @lastCheckin.member.freeze_count != 0 %>

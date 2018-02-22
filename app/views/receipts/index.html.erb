@@ -40,7 +40,7 @@
         <td><%= receipt.date %></td>
         <td><%= link_to 'Print', receipt, class: 'btn btn-primary btn-block', :"data-turbolinks" => false %></td>
         <td><%= link_to 'Edit', edit_receipt_path(receipt), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
-        <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
+        <td><%= link_to 'Delete', receipt, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
     <% end %>
   </tbody>

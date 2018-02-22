@@ -3,10 +3,10 @@
 
     <div class="row">
       <div class="col">
-        <%= form.collection_select :branch_id, Branch.all, :id, :name %>
+        <%= form.text_field :staff_code, value: @staff_code, readonly: true %>
       </div>
       <div class="col">
-        <%= form.text_field :staff_code %>
+        <%= form.collection_select :branch_id, Branch.all, :id, :name %>
       </div>
       <div class="col">
         <%= form.select :status, [["Working", 1], ["Retire", 0]] %>
@@ -26,7 +26,7 @@
         <%= f.text_field :lastname %>
       </div>
       <div class="col">
-       <%= f.text_field :phone %>
+       <%= f.text_field :phone, max: 10 %>
       </div>
     </div>
 

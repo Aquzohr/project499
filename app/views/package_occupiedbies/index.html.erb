@@ -4,10 +4,10 @@
 <br><br>
 
 <div class="row">
-  <div class="col col-md-6">
+  <div class="col col-md-8">
     <h1>List Member for Trainer Service</h1>
   </div>
-  <div class="col col-md-6 text-right">
+  <div class="col col-md-4 text-right">
     <%= link_to 'New Trainer Service', new_package_occupiedby_path, class: 'btn btn-info new', :"data-turbolinks" => false  %>
   </div>
 </div>
@@ -38,7 +38,7 @@
         <td><%= package_occupiedby.start_date %></td>
         <td><%= package_occupiedby.end_date %></td>
         <td><%= link_to 'Edit', edit_package_occupiedby_path(package_occupiedby), class: 'btn btn-warning btn-block' %></td>
-        <td><%= link_to 'Destroy', package_occupiedby, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
+        <td><%= link_to 'Delete', package_occupiedby, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
     <% end %>
   </tbody>
