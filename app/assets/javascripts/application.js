@@ -18,7 +18,6 @@
 //= require jquery-ui
 //= require turbolinks
 //= require_tree .
-//= require bootstrap-table
 //= require select2
 
 $(function(){

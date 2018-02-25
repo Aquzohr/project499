@@ -1,21 +1,3 @@
-// pagination center on boostrap table
-
-// #news > div > div > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-pagination > div.pull-right.pagination > ul > li.page-number {
-//   display: none !important;
-// }
-
-#news > div > div > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-pagination > div.pull-right.pagination {
-    float: none !important;
-    display: inline-flex !important;
-    text-align: center !important;
-}
-
-#news > div > div > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-pagination > div.pull-left.pagination-detail{
-  display: none !important;
-}
-
-//end
-
 
 span.title{
   display: none !important;
