@@ -29,11 +29,11 @@ div.bootstrap-table > div.fixed-table-pagination > div.float-left.pagination-det
   display: none !important;
 }
 
-#container > div.bootstrap-table > div.fixed-table-pagination{
+//center pagination
+div.bootstrap-table > div.fixed-table-pagination{
   text-align: center;
 }
 
-//center pagination
 div.float-right.pagination {
   float: none !important;
   display: inline-flex !important;

@@ -91,6 +91,8 @@
 <div class="col-md-12 text-right"><h3><kbd>TODAY: <%= Time.now.to_date %></kbd></h3></div>
 <table data-toggle="table"
        data-pagination="true"
+       data-pagination-pre-text="Previous"
+       data-pagination-next-text="Next"
        data-pagination-loop ="false" >
   <thead>
     <th>NO.</th>
@@ -107,7 +109,7 @@
           <td><%= i+1 %></td>
           <td><%= s.member.member_code %></td>
           <td><%= s.member.user.firstname %> <%= s.member.user.lastname %></td>
-          <td><%= s.checkin_time %></td>
+          <td><%= s.checkin_time.strftime("%H:%Mน. | %a %d/%m/%Y") %></td>
           <td><%= link_to 'Checkout', s, method: :patch, data: { confirm: 'Are you sure?' }, class: "btn btn-warning btn-block" %></td>
         </tr>
       <% end %>

@@ -16,11 +16,11 @@
 
 <table  data-toggle="table"
         data-pagination="true"
-        >
+        data-pagination-pre-text="Previous"
+        data-pagination-next-text="Next" >
   <thead>
     <tr>
       <th>Member Name</th>
-      <th>Date</th>
       <th>Checkin Time</th>
       <th>Checkout Time</th>
     </tr>
@@ -41,9 +41,8 @@
 	    <% @serves.each do |serve|%>
 	      <tr>
 	        <td><%= serve.member.user.firstname %></td>
-	        <td><%= serve.date %></td>
-	        <td><%= serve.checkin_time %></td>
-	        <td><%= serve.checkout_time %></td>
+	        <td><%= serve.checkin_time.strftime("%H:%Mน. | %a %d/%m/%Y") %></td>
+	        <td><%= serve.checkout_time.strftime("%H:%Mน. | %a %d/%m/%Y") %></td>
 	      </tr>
 	    <% end %>
     <% end %>
