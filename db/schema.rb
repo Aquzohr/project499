@@ -97,9 +97,8 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   end
 
   create_table "serves", force: :cascade do |t|
-    t.string   "checkin_time"
-    t.string   "checkout_time"
-    t.date     "date"
+    t.datetime "checkin_time"
+    t.datetime "checkout_time"
     t.integer  "staff_id"
     t.integer  "member_id"
     t.datetime "created_at",    null: false

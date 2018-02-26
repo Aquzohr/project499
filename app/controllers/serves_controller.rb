@@ -15,6 +15,10 @@ class ServesController < ApplicationController
       @lastCheckin = Serve.where(checkout_time: nil).last
     end
 
+    if params[:msg]
+      @errors = 1
+    end
+
   end
 
   # GET /serves/1
@@ -42,7 +46,7 @@ class ServesController < ApplicationController
       elsif @serf.save
         format.html { redirect_to serves_path, notice: 'Serve was successfully created.' }
       else
-        format.html { redirect_to serves_path }
+        format.html { redirect_to serves_path(msg: 1) }
       end
     end
   end
@@ -51,7 +55,7 @@ class ServesController < ApplicationController
   # PATCH/PUT /serves/1.json
   def update
     respond_to do |format|
-      if @serf.update(checkout_time: Time.now.strftime("%H:%M:%S"))
+      if @serf.update(checkout_time: Time.now)
         format.html { redirect_to serves_path, notice: 'Serve was successfully updated.' }
         format.json { render :show, status: :ok, location: @serf }
       else
@@ -73,7 +77,7 @@ class ServesController < ApplicationController
 
   def checkout_all
     respond_to do |format|
-       if Serve.where(checkout_time: nil).update_all(checkout_time: Time.now.strftime("%H:%M:%S"))
+       if Serve.where(checkout_time: nil).update_all(checkout_time: Time.now)
          format.html { redirect_to serves_path, notice: 'Checkin was successfully updated.' }
          format.json { render :show, status: :ok, location: @serve }
        else
@@ -91,6 +95,6 @@ class ServesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def serf_params
-      params.require(:serve).permit(:checkin_time, :checkout_time, :date, :member_id, :staff_id)
+      params.require(:serve).permit(:checkin_time, :checkout_time, :member_id, :staff_id)
     end
 end

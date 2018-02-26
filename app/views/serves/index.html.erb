@@ -41,6 +41,15 @@
   <% end %>
 <% end %>
 
+<% if @errors %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>ข้อความ: </strong> ผู้ใช้คนนี้ได้ทำการ CHECK-IN แล้ว
+  </div>
+<% end %>
+
 <% if @lastCheckin %>
 
   <% if @lastCheckin.member.freeze_count != 0 %>
