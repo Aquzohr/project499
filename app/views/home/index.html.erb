@@ -2,10 +2,7 @@
     <!-- Header -->
     <header class="masthead d-flex" id="home">
       <div class="container text-center my-auto">
-        <h1 class="mb-1">Powerhouse Fitness Center Chiang Mai</h1>
-        <h3 class="mb-5">
-          <em>That moment when you feel like giving up, when it does not seem worth it, that is where change happens. Keep going.</em>
-        </h3>
+        <h1 class="mb-5"><%= image_tag('logo.png', size: "500") %></h1>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#news">What's News</a>
       </div>
       <div class="overlay"></div>
@@ -50,13 +47,47 @@
     <!-- Callout -->
     <section class="callout" id="services">
       <div class="container text-center">
-        <h2 class="mx-auto mb-5 text-white"> The Best Service for Your </h2>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-layers"></i>
+            </span>
+            <h4>
+              <strong class="text-white text-shadow" >Cleanly</strong>
+            </h4>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-present"></i>
+            </span>
+            <h4>
+              <strong class="text-white text-shadow">Birthday Gift</strong>
+            </h4>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-event"></i>
+            </span>
+            <h4>
+              <strong class="text-shadow text-white">Class Exercise</strong>
+            </h4>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-like"></i>
+            </span>
+            <h4>
+              <strong class="text-shadow text-white">Friendly</strong>
+            </h4>
+          </div>
+        </div>
+        <br><br><br>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#contact">Contact Now!</a>
       </div>
     </section>
 
     <!-- Call to Action -->
-    <section class="content-section bg-primary text-white" id="contact">
+    <section class="content-section bg-info text-white" id="contact">
       <div class="container text-center">
         <h2 class="mb-4"><i class="icon-location-pin"></i> Contact Us</h2>
         <hr>
