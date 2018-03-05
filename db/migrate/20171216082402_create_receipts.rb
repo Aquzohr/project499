@@ -4,7 +4,7 @@ class CreateReceipts < ActiveRecord::Migration[5.0]
       t.string :customer_name
       t.string :payment_method
     	t.string :des
-      t.integer :price, null: false, default: 0
+      t.float :price, null: false, default: 0
       t.date :date
 
       t.timestamps
