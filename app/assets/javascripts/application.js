@@ -22,6 +22,12 @@
 
 $(function(){
 
+  $("table").bootstrapTable({
+      formatNoMatches: function () {
+          return 'ยังไม่มีข้อมูลหรือยังไม่ได้ทำรายการดังกล่าว';
+      }
+  });
+
   (function($) {
     "use strict"; // Start of use strict
 
