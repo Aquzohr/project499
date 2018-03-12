@@ -5,7 +5,8 @@
       <%= form.text_field :customer_name %>
     </div>
     <div class="col">
-      <%= form.text_field :payment_method %>
+      <%= form.select :payment_method, [["Cash", "Cash"], ["Credit Card", "Credit Card"]] %>
+
     </div>
     <div class="col">
       <%= form.number_field :price %>

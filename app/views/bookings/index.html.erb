@@ -64,7 +64,7 @@
         <% end %>
 
         <% if booking.status!=1 %>
-          <td><%= link_to 'OK', bookings_confirm_path(:member_id => booking.member.id, :id => booking.id), method: :post, data: { confirm: 'Are you sure?' }, class: "btn btn-info btn-block disabled" %></td>
+          <td><%= link_to 'Booked', bookings_confirm_path(:member_id => booking.member.id, :id => booking.id), method: :post, data: { confirm: 'Are you sure?' }, class: "btn btn-info btn-block disabled" %></td>
         <% end %>
 
       </tr>

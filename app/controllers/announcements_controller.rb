@@ -7,7 +7,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements.json
   def index
 
-    @announcements = Announcement.order(created_at: :desc).paginate(page: params[:pageNumber], per_page: params[:pageSize])
+    @announcements = Announcement.order(date: :desc).paginate(page: params[:pageNumber], per_page: params[:pageSize])
 
     respond_to do |f|
       if current_user

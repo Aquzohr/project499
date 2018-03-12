@@ -58,6 +58,8 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
+    @freeze_time = Member.find(params[:id]).nontrainer_package.freeze_time.to_i
+    @member_code = "m%03d" % Member.find(params[:id]).id.to_i
     respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to members_path, notice: 'Member was successfully updated.' }
