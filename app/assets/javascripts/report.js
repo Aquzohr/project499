@@ -49,6 +49,24 @@ $(function(){
         $('[href="' + lastTab + '"]').tab('show');
     }
 
+  $('#start_date').change(function(event){
+
+    var start_date = $('#start_date').val();
+
+    $('#end_date').val(start_date)
+
+  });
+
+  $('#end_date').click(function(event){
+
+    var start_date = $('#start_date').val();
+
+    $( "#end_date" ).attr( 
+      "min", start_date
+    );
+
+  });
+
 });
 
 
