@@ -1,0 +1,57 @@
+<%= bootstrap_form_for(member) do |form| %>
+
+  <div class="row">
+    <div class="col-2">
+      <%= form.text_field :member_code, value: @member_code, readonly: true %>
+    </div>
+
+    <div class="col-2">
+    <%= form.collection_select :nontrainer_package_id, NontrainerPackage.all, :id, :name %> 
+    </div>
+
+    <div class="col-2">
+    <%= form.number_field :freeze_count, min: 0, max: @freeze_time || 0 %>
+    </div>
+
+    <div class="col-3">
+    <%= form.date_field :start_date %>
+      
+    </div>
+    <div class="col-3">
+    <%= form.date_field :end_date, min: Date.today, data: {'min-start-date' => true} %>
+      
+    </div>
+
+  </div>
+
+    
+    <%= form.fields_for :user do |f| %>
+
+    <div class="row">
+      <div class="col-4">
+      <%= f.text_field :firstname %>
+        
+      </div>
+      <div class="col-4">
+      <%= f.text_field :lastname %>
+        
+      </div>
+      <div class="col-4">
+      <%= f.text_field :phone, max: 10 %>
+        
+      </div>
+    </div>
+
+      <%= f.hidden_field :role, value: 'member' %>
+
+    <% end %>
+
+    <br>
+
+    <div class="row">
+      <div class="col text-center">
+        <%= form.submit nil, class: "btn btn-primary" %>
+      </div>
+    </div>
+
+<% end %>
