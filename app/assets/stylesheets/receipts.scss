@@ -2,18 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.profile-img-card {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #D4D4D4;
+}
+
 .cell-center{
   text-align: center;
   align-self: center;
 }
 
 @media print {
-  #container > div > div > div:nth-child(9) > div > button {
+
+  #confirm_button{
    display: none;
   }
+
   #menu-toggle{
     display: none;
   }
+
 }
 
 

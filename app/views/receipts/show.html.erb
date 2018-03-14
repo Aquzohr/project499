@@ -11,6 +11,12 @@
   <div class="card-block">
 
     <div class="row">
+      <div class="col text-center">
+        <%= image_tag("logo.png", size: "300", class: "") %>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-6">
         <p><h6> <strong><i class='icon-location-pin'></i></strong> No: 69, Room: A5-A6,B6-B8 Chonlaprathan Rd, Tambon Su Thep, Amphoe Mueang Chiang Mai, Chang Wat Chiang Mai 50200</h6></p>
         <p><h6> <strong><i class='icon-phone'></i></strong> 081 764 8701</h6></p>
@@ -37,7 +43,8 @@
     <br><br>
 
     <div class="row">
-      <table class="table table-bordered">
+      <div class="col">
+      <table class="table table-hover table-bordered">
           <thead>
             <tr>
               <th>Description</th>
@@ -51,7 +58,10 @@
             </tr>
           </tbody>
       </table>
+      </div>
     </div>
+
+    <br>
 
     <div class="card card-default">
       <div class="card-header">
@@ -89,7 +99,7 @@
 
     <div class="row">
       <div class="col text-center">
-       <button type="button" class="btn btn-success" onclick="printReceipt()">Confirm</button>
+       <button type="button" id="confirm_button" class="btn btn-success" onclick="printReceipt()">Confirm</button>
       </div>
     </div>
 
