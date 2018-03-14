@@ -45,8 +45,8 @@ class Member < ApplicationRecord
         fullname: "#{self.user.firstname} #{self.user.lastname}",
         phone: self.user.phone,
         nontrainer_package: self.nontrainer_package.name,
-        start_date: self.start_date,
-        end_date: self.end_date,
+        start_date: self.start_date.strftime("%d/%m/%Y"),
+        end_date: self.end_date.strftime("%d/%m/%Y"),
         freeze_count: self.freeze_count,
         edit: edit_link(self.id),
       }

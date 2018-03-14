@@ -41,7 +41,7 @@
         <td><%= receipt.payment_method %></td>
         <td><%= receipt.des %></td>
         <td><%= number_to_currency(receipt.price, unit: "฿") %></td>
-        <td><%= receipt.date %></td>
+        <td><%= receipt.date.strftime("%d/%m/%Y") %></td>
         <td><%= link_to 'Print', receipt, class: 'btn btn-primary btn-block', :"data-turbolinks" => false %></td>
         <td><%= link_to 'Edit', edit_receipt_path(receipt), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
         <td><%= link_to 'Delete', receipt, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>

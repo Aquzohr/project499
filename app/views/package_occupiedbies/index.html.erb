@@ -40,8 +40,8 @@
         <td><%= package_occupiedby.member.member_code %></td>
         <td><%= package_occupiedby.trainer_package.name %></td>
         <td><%= package_occupiedby.balance_session %></td>
-        <td><%= package_occupiedby.start_date %></td>
-        <td><%= package_occupiedby.end_date %></td>
+        <td><%= package_occupiedby.start_date.strftime("%d/%m/%Y") %></td>
+        <td><%= package_occupiedby.end_date.strftime("%d/%m/%Y") %></td>
         <td><%= link_to 'Edit', edit_package_occupiedby_path(package_occupiedby), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
         <td><%= link_to 'Delete', package_occupiedby, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
