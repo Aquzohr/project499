@@ -47,7 +47,7 @@
 	    <% @receipts.each do |r|%>
 
         <tr>
-          <td><%= r.date %></td>
+          <td><%= r.date.strftime("%d/%m/%Y") %></td>
           <td><%= r.des %></td>
           <td><%= number_to_currency(r.price, unit: "฿") %></td>
         </tr>
