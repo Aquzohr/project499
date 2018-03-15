@@ -37,14 +37,19 @@
             </a>
           </li>
           <li class="sidebar-nav-item">
+            <%= link_to(edit_user_registration_path, class: "js-scroll-trigger", :"data-turbolinks" => false ) do %> 
+              <i class="icon-info"></i> Change Password
+            <% end %>
+          </li>
+          <li class="sidebar-nav-item">
             <%= link_to(destroy_user_session_path, :method => :delete, class: "js-scroll-trigger" ) do %> 
-              <i class="icon-login"></i> Logout
+              <i class="icon-logout"></i> Logout
             <% end %>
           </li>       
         <% else %>
           <li class="sidebar-nav-item">
             <%= link_to(new_user_session_path, class: "js-scroll-trigger", :"data-turbolinks" => false) do %> 
-              <i class="icon-logout"></i> Login
+              <i class="icon-login"></i> Login
             <% end %>
           </li> 
         <% end %>
