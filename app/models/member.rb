@@ -17,16 +17,15 @@ class Member < ApplicationRecord
 	accepts_nested_attributes_for :user
 	validates_associated :user
 
-  validates :member_code, presence: true, uniqueness: true
-
   def self.search(search)
 	  wildcard_search = "%#{search}%"
 
-	  joins(:user).where("member_code LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
+	  joins(:user).where("CAST(members.id AS TEXT) LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
 	end
 
   def codeAndFullname
-    "#{self.member_code}: #{self.user.firstname}  #{self.user.lastname}"
+    code = "m%03d" % self.id
+    "#{code}: #{self.user.firstname}  #{self.user.lastname}"
   end
 
   def self.haveTrainer
@@ -41,7 +40,7 @@ class Member < ApplicationRecord
 
     if options[:index]
       return {
-        member_code: self.member_code,
+        member_code: "m%03d" % self.id,
         fullname: "#{self.user.firstname} #{self.user.lastname}",
         phone: self.user.phone,
         nontrainer_package: self.nontrainer_package.name,

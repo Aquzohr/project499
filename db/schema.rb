@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.string   "member_code",                       null: false
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "freeze_count",          default: 0, null: false
@@ -110,7 +109,6 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   create_table "staffs", force: :cascade do |t|
     t.string   "position"
     t.integer  "status",     default: 1, null: false
-    t.string   "staff_code",             null: false
     t.integer  "user_id"
     t.integer  "branch_id"
     t.datetime "created_at",             null: false

@@ -15,17 +15,16 @@ class Staff < ApplicationRecord
   belongs_to :user
   accepts_nested_attributes_for :user
   validates_associated :user
-
-  validates :staff_code, presence: true, uniqueness: true
   
   def self.search(search)
     wildcard_search = "%#{search}%"
 
-    joins(:user).where("staff_code LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
+    joins(:user).where("CAST(staffs.id AS TEXT) LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
   end
 
   def codeAndFullname
-    "#{self.staff_code}: #{self.user.firstname}  #{self.user.lastname}"
+    code = "s%03d" % self.id
+    "#{code}: #{self.user.firstname}  #{self.user.lastname}"
   end
 
   def edit_link(id)
@@ -44,7 +43,7 @@ class Staff < ApplicationRecord
 
     if options[:index]
       return {
-        staff_code: self.staff_code,
+        staff_code: "s%03d" % self.id,
         fullname: "#{self.user.firstname} #{self.user.lastname}",
         phone: self.user.phone,
         position: self.position,

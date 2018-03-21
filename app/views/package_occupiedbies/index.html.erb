@@ -37,7 +37,7 @@
   <tbody>
     <% @package_occupiedbies.each do |package_occupiedby| %>
       <tr>
-        <td><%= package_occupiedby.member.member_code %></td>
+        <td><%= "m%03d" % package_occupiedby.member.id %></td>
         <td><%= package_occupiedby.trainer_package.name %></td>
         <td><%= package_occupiedby.balance_session %></td>
         <td><%= package_occupiedby.start_date.strftime("%d/%m/%Y") %></td>

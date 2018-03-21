@@ -36,35 +36,35 @@ NontrainerPackage.create(freeze_time: 0, package_id: 5)
 
 #create Trainer Package
 Package.create(name: "Personal Trainer",price: 8000)
-TrainerPackage.create(session: rand(10..50), package_id: 6)
+TrainerPackage.create(session: 30, package_id: 6)
 
 Package.create(name: "Boxing",price: 7000)
-TrainerPackage.create(session: rand(10..50), package_id: 7)
+TrainerPackage.create(session: 20, package_id: 7)
 
 Package.create(name: "GLG",price: 11200)
-TrainerPackage.create(session: rand(10..50), package_id: 8)
+TrainerPackage.create(session: 50, package_id: 8)
 
 Package.create(name: "Strength Training",price: 5000)
-TrainerPackage.create(session: rand(10..50), package_id: 9)
+TrainerPackage.create(session: 30, package_id: 9)
 
 Package.create(name: "Cardio Training",price: 3000)
-TrainerPackage.create(session: rand(10.50), package_id: 10)
+TrainerPackage.create(session: 20, package_id: 10)
 
 #Admin 
 User.create(email: 'admin@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
-Staff.create(position: 'Admin', staff_code: 's001', user_id: 1, branch_id: 1)
+Staff.create(position: 'Admin', user_id: 1, branch_id: 1)
 
 #Genaral Staff
 User.create(email: 'staff@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
-Staff.create(position: 'Genaral', staff_code: 's002', user_id: 2, branch_id: 1)
+Staff.create(position: 'Genaral', user_id: 2, branch_id: 1)
 
 #Trainer
 User.create(email: 'trainer@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
-Staff.create(position: 'Trainer', staff_code: 's003', user_id: 3, branch_id: 1)
+Staff.create(position: 'Trainer', user_id: 3, branch_id: 1)
 
 #Member
 User.create(email: 'member@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'member')
-Member.create(member_code: 'm001', start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: 4, nontrainer_package_id: 1)
+Member.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: 4, nontrainer_package_id: 1)
 
 ####################################
 
@@ -88,7 +88,7 @@ end
 position = ["Genaral","Trainer", "Admin"]
 
 4.upto(33) do |i|
-	Staff.create(staff_code: "s%03d" % i, position: position[rand(0..2)], user_id: i, branch_id: rand(1..3))
+	Staff.create(position: position[rand(0..2)], user_id: i, branch_id: rand(1..3))
 end
 
 ###################################
@@ -101,7 +101,7 @@ end
 k=2
 
 34.upto(63) do |i|
-	Member.create(member_code: "m%03d" % k, start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: i, nontrainer_package_id: 1)
+	Member.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: i, nontrainer_package_id: 1)
   k=k+1;
 end
 
@@ -124,9 +124,9 @@ Serve.create(checkin_time: "2018-03-13 03:42:14", checkout_time: "2018-03-13 03:
 ###################
 
 #Receipt
-Receipt.create(customer_name: 'John', payment_method: 'Cash', des: '1 Monthly', price: 950, date: Faker::Date.backward(14))
-Receipt.create(customer_name: 'Jab', payment_method: 'Cash', des: 'Day', price: 100, date: Faker::Date.backward(14))
-Receipt.create(customer_name: 'Nami', payment_method: 'Credit Card', des: 'Annual', price: 9500, date: Date.today)
+Receipt.create(customer_name: 'John', payment_method: 'Cash', des: '1 Monthly', price: 950, date: Faker::Date.backward(14), staff_id: 2)
+Receipt.create(customer_name: 'Jab', payment_method: 'Cash', des: 'Day', price: 100, date: Faker::Date.backward(14), staff_id: 2)
+Receipt.create(customer_name: 'Nami', payment_method: 'Credit Card', des: 'Annual', price: 9500, date: Date.today, staff_id: 2)
 
 #############
 
