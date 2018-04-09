@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-6">
-     <%= form.collection_select :member_id, Member.haveTrainer, :id, :codeAndFullname %>
+     <%= form.collection_select :member_id, Member.haveTrainer.group(:id).order(:id), :id, :OwnerPackage %>
     </div>
     <div class="col-6">
       <%= form.collection_select :staff_id, Staff.where(position: "Trainer"), :id, :codeAndFullname %>

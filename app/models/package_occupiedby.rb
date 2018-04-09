@@ -6,5 +6,4 @@ class PackageOccupiedby < ApplicationRecord
   validates_presence_of :trainer_package_id, :member_id, :start_date, :end_date
   validates :balance_session, numericality: { other_than: 0 }
 
-
 end

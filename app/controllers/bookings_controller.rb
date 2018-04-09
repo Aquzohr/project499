@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   def index
 
     if current_user.role=="staff"
-      @bookings = Booking.order(created_at: :desc)
+      @bookings = Booking.order(start_datetime: :desc)
     end
 
     if current_user.role=="member"

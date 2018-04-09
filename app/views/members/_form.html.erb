@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-2">
-    <%= form.number_field :freeze_count, min: 0, max: @freeze_time || 0 %>
+    <%= form.number_field :freeze_count, min: 0, max: @freeze_time || 0, readonly: true %>
     </div>
 
     <div class="col-3">

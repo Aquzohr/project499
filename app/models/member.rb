@@ -28,6 +28,11 @@ class Member < ApplicationRecord
     "#{code}: #{self.user.firstname}  #{self.user.lastname}"
   end
 
+  def OwnerPackage
+    code = "m%03d" % self.id
+    "#{code}: #{self.user.firstname}  #{self.user.lastname} | #{self.package_occupiedby.last.trainer_package.name}"
+  end
+
   def self.haveTrainer
     Member.joins(:package_occupiedby)
   end

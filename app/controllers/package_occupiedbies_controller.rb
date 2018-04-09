@@ -4,7 +4,7 @@ class PackageOccupiedbiesController < ApplicationController
   # GET /package_occupiedbies
   # GET /package_occupiedbies.json
   def index
-    @package_occupiedbies = PackageOccupiedby.all
+    @package_occupiedbies = PackageOccupiedby.order(start_date: :desc)
   end
 
   # GET /package_occupiedbies/1

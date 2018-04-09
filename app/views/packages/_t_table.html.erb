@@ -3,8 +3,8 @@
         data-pagination-next-text="Next" >
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Price</th>
+      <th data-width="300px">Name</th>
+      <th data-width="300px">Price</th>
       <th>Session</th>
       <th data-width="100px"></th>
     </tr>
@@ -13,7 +13,7 @@
     <% packages.each do |p| %>
       <tr>
         <td><%= p.package.name %></td>
-        <td><%= p.package.price %></td>
+        <td><%= number_to_currency(p.package.price, unit: "฿") %></td>
         <td><%= p.session %></td>
         <td><%= link_to 'Edit', edit_trainer_package_path(p), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
       </tr>
