@@ -14,11 +14,11 @@
     </div>
 
     <div class="col-3">
-    <%= form.date_field :start_date %>
+    <%= form.date_field :start_date, min: Date.today %>
       
     </div>
     <div class="col-3">
-    <%= form.date_field :end_date, min: Date.today, data: {'min-start-date' => true} %>
+    <%= form.date_field :end_date, min: Date.today %>
       
     </div>
 
@@ -52,7 +52,7 @@
         
       </div>
       <div class="col-4">
-      <%= f.text_field :phone, max: 10 %>
+      <%= f.text_field :phone, minlength: 10, maxlength: 10 %>
         
       </div>
     </div>

@@ -4,9 +4,8 @@ class PackagesController < ApplicationController
   # GET /packages
   # GET /packages.json
   def index
-    @nt_packages = NontrainerPackage.all
-    @t_packages = TrainerPackage.all
-
+    @nt_packages = NontrainerPackage.order(:created_at)
+    @t_packages = TrainerPackage.order(:created_at)
   end
 
   # GET /packages/1

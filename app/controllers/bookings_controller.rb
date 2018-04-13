@@ -11,7 +11,13 @@ class BookingsController < ApplicationController
 
     if current_user.role=="member"
       @bookings = Booking.where(member_id: current_user.member.id).order(created_at: :desc)
-      @balance_session = PackageOccupiedby.where(member_id: current_user.member.id).last.balance_session
+
+
+      packageoccupiedby = PackageOccupiedby.where(member_id: current_user.member.id)
+      @balance_session = 0
+      unless packageoccupiedby.blank?
+        @balance_session = packageoccupiedby.last.balance_session
+      end
     end
 
   end

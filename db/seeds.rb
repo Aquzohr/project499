@@ -51,19 +51,19 @@ Package.create(name: "Cardio Training",price: 3000)
 TrainerPackage.create(session: 20, package_id: 10)
 
 #Admin 
-User.create(email: 'admin@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
+User.create(email: 'admin@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: '09' + Faker::PhoneNumber.subscriber_number(8), role: 'staff')
 Staff.create(position: 'Admin', user_id: 1, branch_id: 1)
 
 #Genaral Staff
-User.create(email: 'staff@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
+User.create(email: 'staff@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: '09' + Faker::PhoneNumber.subscriber_number(8), role: 'staff')
 Staff.create(position: 'Genaral', user_id: 2, branch_id: 1)
 
 #Trainer
-User.create(email: 'trainer@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
+User.create(email: 'trainer@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: '09' + Faker::PhoneNumber.subscriber_number(8), role: 'staff')
 Staff.create(position: 'Trainer', user_id: 3, branch_id: 1)
 
 #Member
-User.create(email: 'member@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'member')
+User.create(email: 'member@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: '09' + Faker::PhoneNumber.subscriber_number(8), role: 'member')
 Member.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), user_id: 4, nontrainer_package_id: 1)
 
 ####################################
@@ -82,7 +82,7 @@ Announcement.create(title: 'วันนี้วันเดียว สมั
 
 #create Staff
 1.upto(30) do |i|
-   User.create(email: Faker::Internet.unique.free_email, password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'staff')
+   User.create(email: Faker::Internet.unique.free_email, password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: '09' + Faker::PhoneNumber.subscriber_number(8), role: 'staff')
 end
 
 position = ["Genaral","Trainer", "Admin"]
@@ -95,7 +95,7 @@ end
 
 #create Member
 1.upto(30) do |i|
-   User.create(email: Faker::Internet.unique.free_email, password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: Faker::PhoneNumber.cell_phone, role: 'member')
+   User.create(email: Faker::Internet.unique.free_email, password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: '09' + Faker::PhoneNumber.subscriber_number(8), role: 'member')
 end
 
 k=2

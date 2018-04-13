@@ -17,6 +17,8 @@ class Member < ApplicationRecord
 	accepts_nested_attributes_for :user
 	validates_associated :user
 
+  validates :start_date,:end_date, presence: true
+
   def self.search(search)
 	  wildcard_search = "%#{search}%"
 
