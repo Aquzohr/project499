@@ -5,13 +5,13 @@
         <%= form.text_field :title%>
       </div>
       <div class="col-6">
-        <%= form.date_field :date, min: Date.today, value: Date.today %>
+        <%= form.date_field :date, min: Date.today, value: Date.today, readonly: true %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-8">
-        <%= form.text_area :des %>
+        <%= form.text_area :des, label: "Description" %>
       </div>
       <div class="col-4 cell-center">
         <%= form.submit nil, class: "btn btn-info btn-block" %>
