@@ -11,10 +11,10 @@
 
   <div class="row">
     <div class="col">
-      <%= form.datetime_field :start_datetime, min: Date.today+1 %>
+      <%= form.datetime_field :start_datetime, min: Time.now + 60*60 %>
     </div>
     <div class="col">
-      <%= form.datetime_field :end_datetime, min: Date.today+1 %>
+      <%= form.datetime_field :end_datetime, min: Time.now + 2*60*60 %>
     </div>
   </div>
 
