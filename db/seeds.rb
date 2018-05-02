@@ -36,19 +36,19 @@ NontrainerPackage.create(freeze_time: 0, package_id: 5)
 
 #create Trainer Package
 Package.create(name: "Personal Trainer",price: 8000)
-TrainerPackage.create(session: 30, package_id: 6)
+TrainerPackage.create(session: 30, quata: 10, package_id: 6)
 
 Package.create(name: "Boxing",price: 7000)
-TrainerPackage.create(session: 20, package_id: 7)
+TrainerPackage.create(session: 20, quata: 8, package_id: 7)
 
 Package.create(name: "GLG",price: 11200)
-TrainerPackage.create(session: 50, package_id: 8)
+TrainerPackage.create(session: 50, quata: 6, package_id: 8)
 
 Package.create(name: "Strength Training",price: 5000)
-TrainerPackage.create(session: 30, package_id: 9)
+TrainerPackage.create(session: 30, quata: 4, package_id: 9)
 
 Package.create(name: "Cardio Training",price: 3000)
-TrainerPackage.create(session: 20, package_id: 10)
+TrainerPackage.create(session: 20, quata: 2, package_id: 10)
 
 #Admin 
 User.create(email: 'admin@powerhouse.com', password: 'password', firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, phone: '09' + Faker::PhoneNumber.subscriber_number(8), role: 'staff')
@@ -69,13 +69,12 @@ Member.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forwar
 ####################################
 
 #create Announcement
-Announcement.create(title: 'วันนี้ทางยิมปิดบริการ 1 วัน', des: 'จะเปิดใช้บริการอีกที 6.00 น วันจันทร์', date: Faker::Date.backward(14))
-Announcement.create(title: 'โซนใหม่ PINK ZONE', des: 'เปิดให้บริการ24 ชม.', date: Faker::Date.backward(14))
-Announcement.create(title: 'ไม่อนุญาติให้สมาชิกเก็บสัมภาระไว้ในตู้ล๊อกเกอร์ค้างคืน', des: 'โดยได้มีการแจ้งระเบียบนี้ให้สมาชิกทราบแล้วทุกท่านตั้งแต่ตอนสมัครสมาชิกว่ามีบริการตู้เก็บสัมภาระฟรี และให้ใช้วันต่อวันเท่านั้น
-', date: Faker::Date.backward(14))
-Announcement.create(title: 'Sexy Dance Class', des: 'มาลองแล้วคุณจะรู้ ว่าใครๆ ก็เต้นได้', date: Faker::Date.backward(14))
-Announcement.create(title: 'งดคลาส 90s Dance', des: 'ในวันเสาร์ที่ 24 กพ.นี้หนึ่งวันเนื่องจากจะมีการใช้ห้องคลาสราชันยิม', date: Faker::Date.backward(14))
-Announcement.create(title: 'วันนี้วันเดียว สมัครสมาชิกหรือต่ออายุสมาชิก', des: 'นำใบเสร็จไปแลกบัตรกำนัล Starbucks มูลค่า 100 บาท #ฟรี ', date: Faker::Date.backward(14))
+Announcement.create(title: 'วันนี้ทางยิมปิดบริการ 1 วัน', des: 'จะเปิดใช้บริการอีกที 6.00 น วันจันทร์', start_datetime: Faker::Date.backward(14), end_datetime: Faker::Date.forward(23))
+Announcement.create(title: 'โซนใหม่ PINK ZONE', des: 'เปิดให้บริการ24 ชม.', start_datetime: Faker::Date.backward(14), end_datetime: Faker::Date.forward(23))
+Announcement.create(title: 'ไม่อนุญาติให้สมาชิกเก็บสัมภาระไว้ในตู้ล๊อกเกอร์ค้างคืน', des: 'โดยได้มีการแจ้งระเบียบนี้ให้สมาชิกทราบแล้วทุกท่านตั้งแต่ตอนสมัครสมาชิกว่ามีบริการตู้เก็บสัมภาระฟรี และให้ใช้วันต่อวันเท่านั้น', start_datetime: Faker::Date.backward(14), end_datetime: Faker::Date.forward(23))
+Announcement.create(title: 'Sexy Dance Class', des: 'มาลองแล้วคุณจะรู้ ว่าใครๆ ก็เต้นได้', start_datetime: Faker::Date.backward(14), end_datetime: Faker::Date.forward(23))
+Announcement.create(title: 'งดคลาส 90s Dance', des: 'ในวันเสาร์ที่ 24 กพ.นี้หนึ่งวันเนื่องจากจะมีการใช้ห้องคลาสราชันยิม', start_datetime: Faker::Date.backward(14), end_datetime: Faker::Date.forward(23))
+Announcement.create(title: 'วันนี้วันเดียว สมัครสมาชิกหรือต่ออายุสมาชิก', des: 'นำใบเสร็จไปแลกบัตรกำนัล Starbucks มูลค่า 100 บาท #ฟรี ', start_datetime: Faker::Date.backward(14), end_datetime: Faker::Date.forward(23))
 
 
 ####################################

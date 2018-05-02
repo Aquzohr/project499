@@ -4,8 +4,8 @@ class PackagesController < ApplicationController
   # GET /packages
   # GET /packages.json
   def index
-    @nt_packages = NontrainerPackage.order(:created_at)
-    @t_packages = TrainerPackage.order(:created_at)
+    @nt_packages = NontrainerPackage.order(created_at: :desc)
+    @t_packages = TrainerPackage.order(created_at: :desc)
   end
 
   # GET /packages/1
@@ -70,6 +70,6 @@ class PackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def package_params
-      params.require(:package).permit(:name, :price, nontrainer_package_attributes: [:id, :freeze_time], trainer_package_attributes: [:id, :session])
+      params.require(:package).permit(:name, :price, nontrainer_package_attributes: [:id, :freeze_time], trainer_package_attributes: [:id, :session, :quata])
     end
 end

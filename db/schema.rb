@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   create_table "announcements", force: :cascade do |t|
     t.string   "title"
     t.text     "des"
-    t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date     "start_datetime"
+    t.date     "end_datetime"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "staff_id"
     t.index ["staff_id"], name: "index_announcements_on_staff_id", using: :btree
   end
@@ -119,6 +120,7 @@ ActiveRecord::Schema.define(version: 20180206044453) do
 
   create_table "trainer_packages", force: :cascade do |t|
     t.integer  "session",    default: 0, null: false
+    t.integer  "quata",      default: 0, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "package_id"

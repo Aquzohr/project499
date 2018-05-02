@@ -15,6 +15,7 @@
 
 <br><br>
 
+
 <table  data-toggle="table"
         data-pagination-pre-text="Previous"
         data-pagination-next-text="Next"
@@ -24,20 +25,26 @@
     <tr>
       <th>Title</th>
       <th>Des</th>
-      <th data-width="100px">Date</th>
+      <th data-width="100px">Start Date</th>
+      <th data-width="100px">End Date</th>
       <th data-width="100px"></th>
       <th data-width="100px"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @announcements.each do |announcement| %>
+    <% @announcements_all.each do |announcement| %>
       <tr>
         <td><%= announcement.title %></td>
         <td><%= announcement.des %></td>
-        <td><%= announcement.date.strftime("%d/%m/%Y") %></td>
+        <td><%= announcement.start_datetime.strftime("%d/%m/%Y") %></td>
+        <td><%= announcement.end_datetime.strftime("%d/%m/%Y") %></td>
         <td><%= link_to 'Edit', edit_announcement_path(announcement), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
-        <td><%= link_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
+        <% if  Time.now.to_date > announcement.end_datetime %>
+          <td><%= link_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

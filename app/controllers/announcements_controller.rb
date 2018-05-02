@@ -7,10 +7,11 @@ class AnnouncementsController < ApplicationController
   # GET /announcements.json
   def index
 
-    @announcements = Announcement.order(date: :desc).paginate(page: params[:pageNumber], per_page: params[:pageSize])
+    @announcements = Announcement.where("? >= start_datetime AND ? <= end_datetime", Time.now, Time.now).order(start_datetime: :desc).paginate(page: params[:pageNumber], per_page: params[:pageSize])
 
     respond_to do |f|
       if current_user
+        @announcements_all = Announcement.order(created_at: :desc)
         f.html { render 'announcements/index' }
       else
         f.html { render 'home/index' }
@@ -87,6 +88,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:title, :des, :date)
+      params.require(:announcement).permit(:title, :des, :start_datetime, :end_datetime)
     end
 end

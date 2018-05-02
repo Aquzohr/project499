@@ -9,6 +9,7 @@ class Package < ApplicationRecord
   validates_associated :trainer_package
 
   validates_presence_of :name
+  validates_uniqueness_of :name
   validates :price, numericality: { other_than: 0 }
 
 

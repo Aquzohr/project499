@@ -6,6 +6,7 @@
       <th data-width="300px">Name</th>
       <th data-width="300px">Price</th>
       <th>Session</th>
+      <th>Quata</th>
       <th data-width="100px"></th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
         <td><%= p.package.name %></td>
         <td><%= number_to_currency(p.package.price, unit: "฿") %></td>
         <td><%= p.session %></td>
+        <td><%= p.quata %></td>
         <td><%= link_to 'Edit', edit_trainer_package_path(p), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
       </tr>
     <% end %>
