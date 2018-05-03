@@ -69,6 +69,6 @@ class TrainerPackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trainer_package_params
-      params.require(:trainer_package).permit(:session, :quata, package_attributes: [:name, :price])
+      params.require(:trainer_package).permit(:session, :quata, package_attributes: [:id, :name, :price])
     end
 end

@@ -69,6 +69,6 @@ class NontrainerPackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nontrainer_package_params
-      params.require(:nontrainer_package).permit(:freeze_time, package_attributes: [:name, :price])
+      params.require(:nontrainer_package).permit(:freeze_time, package_attributes: [:id, :name, :price])
     end
 end

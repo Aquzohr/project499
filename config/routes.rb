@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   post 'report', to: 'report#index'
 
   resources :packages
-  scope '/package' do
-    resources :nontrainer_packages
-    resources :trainer_packages
-  end
+  resources :nontrainer_packages
+  resources :trainer_packages
 
   resources :receipts
   
