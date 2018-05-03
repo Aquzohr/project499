@@ -4,6 +4,16 @@
 </a>
 <br><br>
 
+<% if @errors %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>ข้อความ: </strong> ช่วงเวลาการนัดหมายนี้เกิน Quata แล้ว  <br>
+      ปัจจุบันการนัดหมาย <%= params[:booking_count] %> ครั้ง / จำนวน Quata จำกัด <%= params[:package_quata] %> ครึ้ง
+  </div>
+<% end %>
+
 <h1>New Booking</h1>
 
 <hr>

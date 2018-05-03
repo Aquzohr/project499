@@ -35,6 +35,14 @@ class Member < ApplicationRecord
     "#{code}: #{self.user.firstname}  #{self.user.lastname} | #{self.package_occupiedby.last.trainer_package.name}"
   end
 
+  def OwnerPackageID
+    self.package_occupiedby.last.trainer_package.id
+  end
+
+  def OwnerPackageQuata
+    self.package_occupiedby.last.trainer_package.quata
+  end
+
   def self.haveTrainer
     Member.joins(:package_occupiedby)
   end

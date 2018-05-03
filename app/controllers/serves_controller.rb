@@ -46,7 +46,7 @@ class ServesController < ApplicationController
       elsif @serf.save
         format.html { redirect_to serves_path, notice: 'Serve was successfully created.' }
       else
-        format.html { redirect_to serves_path(msg: 1) }
+        format.html { redirect_to serves_path(msg: 1) } #checking again
       end
     end
   end

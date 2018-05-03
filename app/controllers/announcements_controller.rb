@@ -11,7 +11,7 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |f|
       if current_user
-        @announcements_all = Announcement.order(created_at: :desc)
+        @announcements_all = Announcement.order(start_datetime: :desc)
         f.html { render 'announcements/index' }
       else
         f.html { render 'home/index' }

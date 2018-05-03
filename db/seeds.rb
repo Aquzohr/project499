@@ -138,9 +138,4 @@ PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::
 
 ############
 
-#booking
-Booking.create(start_datetime: "2018-03-15 04:00:00", end_datetime: "2018-03-15 05:00:00", status: 1, staff_id: 3, member_id: 1)
-Booking.create(start_datetime: "2018-03-14 05:00:00", end_datetime: "2018-03-14 06:00:00", status: 1, staff_id: 3, member_id: 1)
-Booking.create(start_datetime: "2018-03-13 06:00:00", end_datetime: "2018-03-13 07:00:00", status: 0, staff_id: 3, member_id: 1)
-
 puts "Add Infomation to Database Complete!"

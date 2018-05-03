@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_datetime"
     t.datetime "end_datetime"
+    t.integer  "package_type",               null: false
     t.integer  "status",         default: 1, null: false
     t.integer  "staff_id"
     t.integer  "member_id"

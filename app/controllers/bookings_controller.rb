@@ -37,6 +37,10 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
+    if params[:msg]
+      @errors = 1
+    end
+
     @booking = Booking.new
   end
 
@@ -48,9 +52,22 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
+    package_type = Member.find(params[:booking][:member_id]).OwnerPackageID
+    @booking.package_type = package_type
+
+    booking_count = 0
+    package_quata = 0
+    unless params[:booking][:start_datetime].blank?
+      start_time = Time.parse(params[:booking][:start_datetime]).to_s(:time)
+
+      booking_count = Booking.where("package_type=? AND cast(start_datetime as text) LIKE ?", package_type, '%'+start_time+'%').count
+      package_quata = Member.find(params[:booking][:member_id]).OwnerPackageQuata
+    end
 
     respond_to do |format|
-      if @booking.save
+      if booking_count >= package_quata
+        format.html { redirect_to new_booking_path(msg: 1, booking_count: booking_count, package_quata: package_quata) } #booking more than quata
+      elsif @booking.save
         format.html { redirect_to bookings_path, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
