@@ -58,10 +58,14 @@ class BookingsController < ApplicationController
     booking_count = 0
     package_quata = 0
     unless params[:booking][:start_datetime].blank?
-      start_time = Time.parse(params[:booking][:start_datetime]).to_s(:time)
+      start_time = Time.parse(params[:booking][:start_datetime])#.to_s(:time)
+      end_time = Time.parse(params[:booking][:end_datetime])#.to_s(:time)
 
-      booking_count = Booking.where("package_type=? AND cast(start_datetime as text) LIKE ?", package_type, '%'+start_time+'%').count
+
+      #booking_count = Booking.where("package_type=? AND cast(start_datetime as text) LIKE ?", package_type, '%'+start_time+'%').count
+      booking_count = Booking.where("end_datetime >= ? OR start_datetime <= ?", start_time, end_time).count
       package_quata = Member.find(params[:booking][:member_id]).OwnerPackageQuata
+
     end
 
     respond_to do |format|
