@@ -1,6 +1,7 @@
 class CreateStaffs < ActiveRecord::Migration[5.0]
   def change
     create_table :staffs do |t|
+      t.string :staff_code
       t.string :position
       t.integer :status, null: false, default: 1
       

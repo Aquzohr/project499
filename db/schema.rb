@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180510082906) do
+ActiveRecord::Schema.define(version: 20180206044453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20180510082906) do
   end
 
   create_table "members", force: :cascade do |t|
+    t.string   "member_code"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "freeze_count",          default: 0, null: false
@@ -85,10 +86,6 @@ ActiveRecord::Schema.define(version: 20180510082906) do
     t.datetime "updated_at",               null: false
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "receipts", force: :cascade do |t|
     t.string   "customer_name"
     t.string   "payment_method"
@@ -113,6 +110,7 @@ ActiveRecord::Schema.define(version: 20180510082906) do
   end
 
   create_table "staffs", force: :cascade do |t|
+    t.string   "staff_code"
     t.string   "position"
     t.integer  "status",     default: 1, null: false
     t.integer  "user_id"

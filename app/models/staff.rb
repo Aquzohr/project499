@@ -19,7 +19,7 @@ class Staff < ApplicationRecord
   def self.search(search)
     wildcard_search = "%#{search}%"
 
-    joins(:user).where("CAST(staffs.id AS TEXT) LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
+    joins(:user).where("staff_code LIKE :search OR users.firstname LIKE :search", search: wildcard_search)
   end
 
   def codeAndFullname
@@ -43,7 +43,7 @@ class Staff < ApplicationRecord
 
     if options[:index]
       return {
-        staff_code: "s%03d" % self.id,
+        staff_code: self.staff_code,
         fullname: "#{self.user.firstname} #{self.user.lastname}",
         phone: self.user.phone,
         position: self.position,

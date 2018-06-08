@@ -28,19 +28,16 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
     @member.build_user
-    @member_code = "m%03d" % (Member.last.id.to_i+1)
   end
 
   # GET /members/1/edit
   def edit
     @freeze_time = Member.find(params[:id]).nontrainer_package.freeze_time.to_i
-    @member_code = "m%03d" % Member.find(params[:id]).id.to_i
   end
 
   # POST /members
   # POST /members.json
   def create
-    @member_code = "m%03d" % (Member.last.id.to_i+1)
 
     @member = Member.new(member_params)
 
@@ -59,7 +56,7 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1.json
   def update
     @freeze_time = Member.find(params[:id]).nontrainer_package.freeze_time.to_i
-    @member_code = "m%03d" % Member.find(params[:id]).id.to_i
+
     respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to members_path, notice: 'Member was successfully updated.' }
@@ -89,7 +86,7 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:id, :start_date, :end_date, :freeze_count, :nontrainer_package_id, 
+      params.require(:member).permit(:id, :member_code, :start_date, :end_date, :freeze_count, :nontrainer_package_id, 
         user_attributes: [:id, :firstname, :lastname, :phone, :role, :email, :password, :password_confirmation])
     end
 end

@@ -29,7 +29,7 @@ $(function(){
             },
             'package[nontrainer_package_attributes][freeze_time]': { 
               required: true,
-              min: 1
+              min: 0
             },
         },
    });
