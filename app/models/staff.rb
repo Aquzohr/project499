@@ -23,8 +23,7 @@ class Staff < ApplicationRecord
   end
 
   def codeAndFullname
-    code = "s%03d" % self.id
-    "#{code}: #{self.user.firstname}  #{self.user.lastname}"
+    "#{self.staff_code}: #{self.user.firstname}  #{self.user.lastname}"
   end
 
   def edit_link(id)

@@ -110,7 +110,7 @@
       <% if s.member %>
         <tr>
           <td><%= i+1 %></td>
-          <td><%= "m%03d" % s.member.id %></td>
+          <td><%= s.member.member_code %></td>
           <td><%= s.member.user.firstname %> <%= s.member.user.lastname %></td>
           <td><%= s.checkin_time.strftime("%H:%Mน. | %a %d/%m/%Y") %></td>
           <td><%= link_to 'Checkout', s, method: :patch, data: { confirm: 'Are you sure?' }, class: "btn btn-warning btn-block" %></td>

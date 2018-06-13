@@ -26,8 +26,7 @@ class Member < ApplicationRecord
 	end
 
   def codeAndFullname
-    code = "m%03d" % self.id
-    "#{code}: #{self.user.firstname}  #{self.user.lastname}"
+    "#{self.member_code}: #{self.user.firstname}  #{self.user.lastname}"
   end
 
   def OwnerPackage
