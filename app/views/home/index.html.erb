@@ -1,6 +1,6 @@
 
     <!-- Header -->
-    <header class="masthead d-flex" id="home">
+    <header class="masthead d-flex">
       <div class="container text-center my-auto">
         <h1 class="mb-5"><%= image_tag('logo.png', size: "400") %></h1>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#news">What's News</a>
@@ -16,32 +16,30 @@
             <h2> <i class='icon-speech'></i> Announements</h2>
             <hr><br>
 
-            <table id="table" 
-                 data-toggle="table"
-                 data-card-view="true"
-                 data-page-size="5"
-                 data-query-params-type="page"
-                 data-pagination-pre-text="Previous"
-                 data-pagination-next-text="Next"
-                 data-pagination="true"
-                 data-pagination-loop ="true"
-                 data-side-pagination="server"
-                 data-url="announcements.json">
-            <thead>
-              <tr>
-                <th data-field="title" data-sortable="true">Title</th>
-                <th data-field="des" >Des</th>
-                <th data-field="start_datetime" >Start Datetime</th>
+            <div class="row">
+            <% @announcements.each do |announcement| %>
+              <div class="col-sm-3">
+                <div class="card text-center" style="height: 18rem;">
+                  <% if announcement.image_url.present? %>
+                    <img class="card-img-top" src="<%= announcement.image_url %>" alt="Card image cap" style="height: 75px;">
+                  <% else %>
+                    <img class="card-img-top" src="https://www.lrcmyanmar.org/wp-content/uploads/2018/11/noimage.png" alt="Card image cap" style="height: 75px;">
+                  <% end %>
+                  <div class="card-body">
+                    <h5 class="card-title limit-text"><%= announcement.title %></h5>
+                    <a href="<%=  announcement_path(announcement) %>" class="btn btn-primary">อ่านต่อ...</a>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            </div>
 
-              </tr>
-            </thead>
-          </table>
-
-          <br><br>
-          <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Services</a>
+            <br><br>
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">Services</a>
           </div>
         </div>
       </div>
+
     </section>
 
     <!-- Callout -->
@@ -114,7 +112,6 @@
             </a>
           </li>
         </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Kampee Tonoi</p>
       </div>
     </footer>
 
@@ -122,3 +119,4 @@
     <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+

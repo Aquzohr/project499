@@ -39,6 +39,7 @@
         <td><%= announcement.des %></td>
         <td><%= announcement.start_datetime.strftime("%d/%m/%Y") %></td>
         <td><%= announcement.end_datetime.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to 'Show', announcement_path(announcement), class: 'btn btn-info btn-block', :"data-turbolinks" => false %></td>
         <td><%= link_to 'Edit', edit_announcement_path(announcement), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
         <% if  Time.now.to_date > announcement.end_datetime %>
           <td><%= link_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>

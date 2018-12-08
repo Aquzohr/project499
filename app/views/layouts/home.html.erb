@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Powerhouse Fitness Center Chiang Mai</title>
+
+    <link rel="shortcut icon" href="<%= image_path("logo.png") %>" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://rawgit.com/wenzhixin/bootstrap-table/develop/src/bootstrap-table.css"> 
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     
+    <script type="text/javascript" src="https://rawgit.com/wenzhixin/bootstrap-table/develop/src/bootstrap-table.js"></script>
+
+  </head>
+
+  <body id="page-top">
+
+    <a class="menu-toggle rounded" href="#" id="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </a>
+
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger" href="<%= root_path %>" data-turbolinks="false">
+            <i class="icon-home"></i> Home
+          </a>
+        </li>
+
+        <% if user_signed_in? %>
+          <li class="sidebar-nav-item">
+            <a class="js-scroll-trigger" href="#" data-turbolinks="false">
+              <i class="icon-user"></i> Welcome, <%= current_user.firstname %> <%= current_user.lastname %>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <%= link_to(edit_user_registration_path, class: "js-scroll-trigger", :"data-turbolinks" => false ) do %> 
+              <i class="icon-info"></i> Change Password
+            <% end %>
+          </li>
+          <li class="sidebar-nav-item">
+            <%= link_to(destroy_user_session_path, :method => :delete, class: "js-scroll-trigger" ) do %> 
+              <i class="icon-logout"></i> Logout
+            <% end %>
+          </li>       
+        <% else %>
+          <li class="sidebar-nav-item">
+            <%= link_to(new_user_session_path, class: "js-scroll-trigger", :"data-turbolinks" => false) do %> 
+              <i class="icon-login"></i> Login
+            <% end %>
+          </li> 
+        <% end %>
+
+        <hr>
+
+        <% if current_user %>
+
+          <% if current_user.role=="staff" %>
+
+            <% if current_user.staff and current_user.staff.status==1 %>
+              <% if current_user.staff.position!="Admin" %>
+
+                <li class="sidebar-nav-item">
+                  <a class="js-scroll-trigger" href="<%= serves_path %>" data-turbolinks="false">
+                    <i class="icon-event"></i> Serve</a>
+                </li>
+                <li class="sidebar-nav-item">
+                  <a class="js-scroll-trigger" href="<%= package_occupiedbies_path %>" data-turbolinks="false">
+                    <i class="icon-heart"></i> Trainer Service</a>
+                </li>
+                <li class="sidebar-nav-item">
+                  <a class="js-scroll-trigger" href="<%= bookings_path %>" data-turbolinks="false">
+                    <i class="icon-book-open"></i> Booking</a>
+                </li>
+                <li class="sidebar-nav-item">
+                  <a class="js-scroll-trigger" href="<%= receipts_path %>" data-turbolinks="false">
+                    <i class="icon-wallet"></i> Receipt</a>
+                </li>
+              <% end %>
+
+              <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="<%= report_path %>" data-turbolinks="false">
+                  <i class="icon-note"></i> Report</a>
+              </li>
+
+            <% end %>
+
+          <% end %>
+
+          <% if current_user.role=="member" %>
+              <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="<%= bookings_path %>" data-turbolinks="false">
+                  <i class="icon-book-open"></i> Booking</a>
+              </li>
+          <% end %>
+
+          <% if current_user.role=="staff" %>
+          <% if current_user.staff.status==1 %>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="icon-settings"></i> Manage
+              </a>
+              <div class="dropdown-menu dropdown-menu-slidebar" aria-labelledby="navbarDropdownMenuLink">
+                <% if current_user.staff.position!="Admin" %>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= announcements_path %>" data-turbolinks="false"> 
+                    <i class="icon-action-redo"></i> Announcement</a>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= members_path %>" data-turbolinks="false">
+                    <i class="icon-action-redo"></i> Member</a>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= packages_path %>" data-turbolinks="false">
+                    <i class="icon-action-redo"></i> Package</a>
+                <% else %>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= staffs_path %>" data-turbolinks="false">
+                    <i class="icon-action-redo"></i> Staff</a>
+                  <a class="dropdown-item js-scroll-trigger" href="<%= branches_path %>" data-turbolinks="false">
+                    <i class="icon-action-redo"></i> Branch</a>
+                <% end %>
+              </div>
+            </li>
+
+          <% end %>
+          <% end %>
+
+        <% end #end if current_user %>
+
+      </ul>
+
+    </nav>
+
+    <div id="container">
+      <%= yield %>
+    </div>
+
+  </body>
+  
+</html>

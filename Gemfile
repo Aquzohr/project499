@@ -11,6 +11,7 @@ gem "bootstrap_form", git: "https://github.com/bootstrap-ruby/bootstrap_form.git
 #gem "bootstrap-table-rails"
 gem "select2-rails"
 gem 'will_paginate', '~> 3.1.0'
+#gem 'will_paginate-bootstrap4'
 gem 'devise', git: 'https://github.com/plataformatec/devise' #, ref: '88e9a85'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'font-awesome-sass', '~> 4.7.0'
@@ -18,6 +19,7 @@ gem 'jquery-validation-rails'
 gem 'jquery-ui-rails'
 gem 'simple-line-icons-rails'
 gem 'validates_overlap'
+gem 'owlcarousel-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'

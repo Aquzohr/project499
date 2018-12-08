@@ -1,19 +1,4 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @announcement.title %>
-</p>
+<%= @announcement.title %>
 
-<p>
-  <strong>Des:</strong>
-  <%= @announcement.des %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @announcement.date %>
-</p>
-
-<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
-<%= link_to 'Back', announcements_path %>
+<%= link_to 'Back', root_path, class: 'btn btn-primary btn-block', :"data-turbolinks" => false %>

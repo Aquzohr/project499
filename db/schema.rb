@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180206044453) do
   create_table "announcements", force: :cascade do |t|
     t.string   "title"
     t.text     "des"
+    t.text     "image_url"
     t.date     "start_datetime"
     t.date     "end_datetime"
     t.datetime "created_at",     null: false
