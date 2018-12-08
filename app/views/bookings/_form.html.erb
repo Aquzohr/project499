@@ -2,7 +2,12 @@
 
   <div class="row">
     <div class="col-6">
-     <%= form.collection_select :member_id, Member.haveTrainer.group(:id).order(:id), :id, :OwnerPackage %>
+      <% if current_user.role=="staff" %>
+        <%= form.collection_select :member_id, Member.haveTrainer.group(:id).order(:id), :id, :OwnerPackage %>
+      <% else %>
+        <%= form.text_field :member_id, value: current_user.member.codeAndFullname, readonly: true %>
+        <%= form.hidden_field :member_id, value: current_user.member.id %>
+      <% end %>
     </div>
     <div class="col-6">
       <%= form.collection_select :staff_id, Staff.where(position: "Trainer"), :id, :codeAndFullname %>

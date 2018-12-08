@@ -7,6 +7,12 @@ GIT
       rails (>= 5.0)
 
 GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: 1d7e9094b404e77cccd72cfec71c6ea98acd19e7
+  specs:
+    bcrypt (3.1.12)
+
+GIT
   remote: https://github.com/plataformatec/devise
   revision: bdd6081815ca80705aada4cf77aed3b2a2df71c7
   specs:
@@ -70,7 +76,6 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (7.2.5)
       execjs
-    bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap (4.0.0)
       autoprefixer-rails (>= 6.0.3)
@@ -99,6 +104,7 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
+    ffi (1.9.18-x86-mingw32)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     globalid (0.4.1)
@@ -132,8 +138,11 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.1-x86-mingw32)
+      mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pg (0.21.0)
+    pg (0.21.0-x86-mingw32)
     popper_js (1.12.9)
     public_suffix (3.0.1)
     puma (3.11.0)
@@ -210,6 +219,8 @@ GEM
     turbolinks-source (5.0.3)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2018.7)
+      tzinfo (>= 1.0.0)
     uglifier (4.0.2)
       execjs (>= 0.3.0, < 3)
     validates_overlap (0.8.6)
@@ -230,8 +241,10 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
+  bcrypt!
   bootstrap (~> 4.0.0)
   bootstrap_form!
   byebug
@@ -262,4 +275,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.16.1
+   1.17.1

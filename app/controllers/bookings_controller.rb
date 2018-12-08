@@ -52,6 +52,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
+    @booking.status = 2 if current_user.role == "member"
     package_type = Member.find(params[:booking][:member_id]).OwnerPackageID
     @booking.package_type = package_type
 
