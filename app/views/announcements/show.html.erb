@@ -1,4 +1,31 @@
 
-<%= @announcement.title %>
+<a class="d-block p-3 text-center text-white bg-info b4b full-width">
+  <%= image_tag('logo2.png', size: "80") %> <br>
+  ข่าวสาร
+</a>
 
-<%= link_to 'Back', root_path, class: 'btn btn-primary btn-block', :"data-turbolinks" => false %>
+<br><br>
+
+<div class="col-sm-12 text-right">
+  <%= link_to 'Back', root_path, class: 'btn btn-primary', :"data-turbolinks" => false %>
+</div>
+
+<div class="col-sm-12 text-center" style="padding: 20px;">
+  <% if @announcement.image_url.present? %>
+    <img class="card-img-top" src="<%= @announcement.image_url %>" alt="Card image cap" style="width: 50%;">
+  <% else %>
+    <img class="card-img-top" src="https://www.lrcmyanmar.org/wp-content/uploads/2018/11/noimage.png" alt="Card image cap" style="width: 50%;">
+  <% end %>
+</div>
+
+<h1>
+  <%= @announcement.title %>
+  <span class="badge badge-secondary">
+    <%= @announcement.start_datetime.strftime('%a %d/%m/%Y') %>
+  </span>
+</h1>
+
+<hr>
+
+<h4><%= @announcement.des %></h4>
+

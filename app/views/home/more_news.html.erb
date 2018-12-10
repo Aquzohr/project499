@@ -1,0 +1,28 @@
+
+<a class="d-block p-3 text-center text-white bg-info b4b full-width">
+  <%= image_tag('logo2.png', size: "80") %> <br>
+  ข่าวสาร
+</a>
+
+
+<br><br>
+
+<div class="container">
+  <div class="row text-center">
+  <% @announcements.each do |announcement| %>
+    <div class="col-sm-3">
+      <div class="card text-center" style="height: 18rem;">
+        <% if announcement.image_url.present? %>
+          <img class="card-img-top" src="<%= announcement.image_url %>" alt="Card image cap" style="height: 75px;">
+        <% else %>
+          <img class="card-img-top" src="https://www.lrcmyanmar.org/wp-content/uploads/2018/11/noimage.png" alt="Card image cap" style="height: 75px;">
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title limit-text"><%= announcement.title %></h5>
+          <a href="<%=  announcement_path(announcement) %>" class="btn btn-primary">อ่านต่อ...</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
