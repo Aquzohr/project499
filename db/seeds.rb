@@ -24,33 +24,33 @@ end
 Package.create(name: "Annual",price: 9500)
 NontrainerPackage.create(freeze_time: rand(0..6), package_id: 1)
 
-Package.create(name: "6 Monthly",price: 3000)
-NontrainerPackage.create(freeze_time: rand(0..3), package_id: 2)
+# Package.create(name: "6 Monthly",price: 3000)
+# NontrainerPackage.create(freeze_time: rand(0..3), package_id: 2)
 
-Package.create(name: "3 Monthly",price: 1500)
-NontrainerPackage.create(freeze_time: 0, package_id: 3)
+# Package.create(name: "3 Monthly",price: 1500)
+# NontrainerPackage.create(freeze_time: 0, package_id: 3)
 
-Package.create(name: "1 Monthly",price: 950)
-NontrainerPackage.create(freeze_time: 0, package_id: 4)
+# Package.create(name: "1 Monthly",price: 950)
+# NontrainerPackage.create(freeze_time: 0, package_id: 4)
 
-Package.create(name: "Day",price: 100)
-NontrainerPackage.create(freeze_time: 0, package_id: 5)
+# Package.create(name: "Day",price: 100)
+# NontrainerPackage.create(freeze_time: 0, package_id: 5)
 
 #create Trainer Package
-Package.create(name: "Personal Trainer",price: 8000)
-TrainerPackage.create(session: 30, quata: 10, package_id: 6)
+# Package.create(name: "Personal Trainer",price: 8000)
+# TrainerPackage.create(session: 30, quata: 10, package_id: 6)
 
-Package.create(name: "Boxing",price: 7000)
-TrainerPackage.create(session: 20, quata: 8, package_id: 7)
+# Package.create(name: "Boxing",price: 7000)
+# TrainerPackage.create(session: 20, quata: 8, package_id: 7)
 
-Package.create(name: "GLG",price: 11200)
-TrainerPackage.create(session: 50, quata: 6, package_id: 8)
+# Package.create(name: "GLG",price: 11200)
+# TrainerPackage.create(session: 50, quata: 6, package_id: 8)
 
-Package.create(name: "Strength Training",price: 5000)
-TrainerPackage.create(session: 30, quata: 4, package_id: 9)
+# Package.create(name: "Strength Training",price: 5000)
+# TrainerPackage.create(session: 30, quata: 4, package_id: 9)
 
-Package.create(name: "Cardio Training",price: 3000)
-TrainerPackage.create(session: 20, quata: 2, package_id: 10)
+# Package.create(name: "Cardio Training",price: 3000)
+# TrainerPackage.create(session: 20, quata: 2, package_id: 10)
 
 ###################################
 
@@ -132,11 +132,11 @@ Receipt.create(customer_name: 'Nami', payment_method: 'Credit Card', des: 'Annua
 #############
 
 #buy Trainer Package
-PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 1, member_id: 1)
-PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 2, member_id: 2)
-PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 3, member_id: 3)
-PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 4, member_id: 4)
-PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 5, member_id: 5)
+# PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 1, member_id: 1)
+# PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 2, member_id: 2)
+# PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 3, member_id: 3)
+# PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 4, member_id: 4)
+# PackageOccupiedby.create(start_date: Faker::Date.backward(14), end_date: Faker::Date.forward(23), balance_session: 10, trainer_package_id: 5, member_id: 5)
 
 ############
 
