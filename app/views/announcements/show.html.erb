@@ -11,8 +11,8 @@
 </div>
 
 <div class="col-sm-12 text-center" style="padding: 20px;">
-  <% if @announcement.image_url.present? %>
-    <img class="card-img-top" src="<%= @announcement.image_url %>" alt="Card image cap" style="width: 50%;">
+  <% if @announcement.video_embred.present? %>
+    <%=  @announcement.video_embred.html_safe %>
   <% else %>
     <img class="card-img-top" src="https://www.lrcmyanmar.org/wp-content/uploads/2018/11/noimage.png" alt="Card image cap" style="width: 50%;">
   <% end %>

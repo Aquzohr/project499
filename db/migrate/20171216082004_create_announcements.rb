@@ -4,6 +4,7 @@ class CreateAnnouncements < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :des
       t.text :image_url
+      t.text :video_embred
       t.date :start_datetime
       t.date :end_datetime
 

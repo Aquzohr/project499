@@ -16,13 +16,14 @@
     </div>
 
     <div class="row">
-      <div class="col-8">
+      <div class="col-6">
         <%= form.text_area :des, label: "Description" %>
       </div>
-      <div class="col-4 cell-center">
-        <%= form.submit nil, class: "btn btn-info btn-block" %>
+      <div class="col-6">
+        <%= form.text_area :video_embred, label: "Video Embred" %>        
       </div>
     </div>
 
+    <%= form.submit nil, class: "btn btn-info btn-block" %>
 
 <% end %>

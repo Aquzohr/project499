@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180206044453) do
     t.string   "title"
     t.text     "des"
     t.text     "image_url"
+    t.text     "video_embred"
     t.date     "start_datetime"
     t.date     "end_datetime"
     t.datetime "created_at",     null: false

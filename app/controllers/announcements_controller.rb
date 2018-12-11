@@ -88,6 +88,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:title, :des, :start_datetime, :end_datetime, :image_url)
+      params.require(:announcement).permit(:title, :des, :start_datetime, :end_datetime, :image_url, :video_embred)
     end
 end
