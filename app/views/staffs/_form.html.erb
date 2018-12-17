@@ -6,15 +6,14 @@
         <%= form.text_field :staff_code, value: @staff_code, readonly: true %>
       </div>
       <div class="col">
-        <%= form.collection_select :branch_id, Branch.all, :id, :name %>
-      </div>
-      <div class="col">
         <%= form.select :status, [["Working", 1], ["Retire", 0]] %>
       </div>
       <div class="col">
         <%= form.select :position, [["Genaral", "Genaral"], ["Trainer", "Trainer"],["Admin", "Admin"] ] %>
       </div>
     </div>
+
+    <%= form.hidden_field :branch_id, value: 1 %>
 
     <%= form.fields_for :user do |f| %>
 

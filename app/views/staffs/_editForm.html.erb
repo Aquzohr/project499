@@ -6,9 +6,6 @@
         <%= form.text_field :staff_code, value: @staff_code, readonly: true %>
       </div>
       <div class="col">
-        <%= form.collection_select :branch_id, Branch.all, :id, :name %>
-      </div>
-      <div class="col">
         <%= form.select :status, [["Working", 1], ["Retire", 0]] %>
       </div>
       <div class="col">

@@ -27,7 +27,7 @@
                   <% end %>
                   <div class="card-body">
                     <h5 class="card-title limit-text"><%= announcement.title %></h5>
-                    <a href="<%=  announcement_path(announcement) %>" class="btn btn-primary">อ่านต่อ...</a>
+                    <a href="<%=  announcement_path(announcement) %>" class="btn btn-primary" data-turbolinks="false">อ่านต่อ...</a>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
             </div>
 
             <br><br>
-            <a class="btn btn-dark btn-xl js-scroll-trigger" href="<%= more_news_path %>">อ่านทั้งหมด</a>
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="<%= more_news_path %>" data-turbolinks="false">อ่านทั้งหมด</a>
           </div>
         </div>
       </div>
