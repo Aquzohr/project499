@@ -29,6 +29,10 @@ class Member < ApplicationRecord
     "#{self.member_code}: #{self.user.firstname}  #{self.user.lastname}"
   end
 
+  def Fullname
+    "#{self.user.firstname}  #{self.user.lastname}"
+  end
+
   def OwnerPackage
     code = "m%03d" % self.id
     "#{code}: #{self.user.firstname}  #{self.user.lastname} | #{self.package_occupiedby.last.trainer_package.name}"

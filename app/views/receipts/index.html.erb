@@ -30,7 +30,6 @@
       <th>Date</th>
       <th data-width="100px"></th>
       <th data-width="100px"></th>
-      <th data-width="100px"></th>
     </tr>
   </thead>
 
@@ -44,7 +43,6 @@
         <td><%= receipt.date.strftime("%d/%m/%Y") %></td>
         <td><%= link_to 'Print', receipt, class: 'btn btn-primary btn-block', :"data-turbolinks" => false %></td>
         <td><%= link_to 'Edit', edit_receipt_path(receipt), class: 'btn btn-warning btn-block', :"data-turbolinks" => false %></td>
-        <td><%= link_to 'Delete', receipt, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %></td>
       </tr>
     <% end %>
   </tbody>

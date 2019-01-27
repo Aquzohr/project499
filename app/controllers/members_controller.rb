@@ -28,11 +28,13 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
     @member.build_user
+    @member_code = "m%03d" % (Member.last.id.to_i+1)
   end
 
   # GET /members/1/edit
   def edit
     @freeze_time = Member.find(params[:id]).nontrainer_package.freeze_time.to_i
+    @member_code = "m%03d" % (Member.find(params[:id]).id.to_i)
   end
 
   # POST /members
